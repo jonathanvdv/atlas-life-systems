@@ -10,7 +10,7 @@ export default function Navbar() {
     return(
         <nav className="nav-wrapper blue lighten-2">
             <div className="container">
-                <Link to = '/' className = "left brand-logo">Caregiver</Link>
+                <Link to = '/' className = "left brand-logo">Atlas Life Systems</Link>
                 <SignedInLinks/>
                 <SignedOutLinks/>
             </div>

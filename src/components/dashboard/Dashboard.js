@@ -17,25 +17,22 @@ class Dashboard extends Component {
                     <div className="col s12 m6">
                         <ArticleLibrary articles = { articles }/>
                     </div>
-                    <div className="col s12 m5 offset-m1">
-                        <Notifications/>
-                    </div>
                 </div>
             </div>
         )
      }
- }
+}
 
 const mapStateToProps = (state) => {
     console.log(state); 
     return { 
-        articles: state.firestore.ordered.favourites
+        articles: state.firestore.ordered.articles
      }
- }
+}
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        {collection: 'favourites'}
+        {collection: 'articles'}
     ])
 )(Dashboard)
