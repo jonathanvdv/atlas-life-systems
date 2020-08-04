@@ -5,7 +5,7 @@ export const addFavourite = (article) => {
 
         firestore.collection('favourites').add({
             ...article,
-            authors: ['Steve Buscemi', 'Al Pachino', 'Ave Maria', 'Will Will Smith Smith Smiths'],
+            authors: ['Steve Buscemi, ', 'Al Pachino, ', 'Ave Maria, ', 'Will Will Smith Smith Smiths'],
             userId: 42069,
             date: new Date()
         }).then(() => {
