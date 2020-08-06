@@ -1,10 +1,8 @@
 // This component creates a navigation bar
 import React from 'react'
-import {Link, NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
-import SignUp from '../authorization/SignUp'
-import SignIn from '../authorization/SignIn'
 
 export default function Navbar() {
     return(

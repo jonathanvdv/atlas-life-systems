@@ -1,6 +1,5 @@
 // This component is currently the homepage of the application
 import React, { Component } from 'react'
-import Notifications from './Notifications'
 import ArticleLibrary from '../articles/ArticleLibrary'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
