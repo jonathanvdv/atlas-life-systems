@@ -3,8 +3,6 @@ import React from 'react'
 
 export default function ArticleDetails(props) {
     const article = props.location.state.article;
-    console.log(article);
-    const article_id = props.match.params.article_id;
     
     function handleClick(e) {
         e.preventDefault();
