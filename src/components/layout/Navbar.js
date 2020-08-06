@@ -1,10 +1,10 @@
 // This component creates a navigation bar
 import React from 'react'
-import {Link, NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
-import SignUp from '../authorization/SignUp'
-import SignIn from '../authorization/SignIn'
+// import SignUp from '../auth/SignUp'
+// import SignIn from '../auth/SignIn'
 import { connect } from 'react-redux'
 
 export function Navbar() {
@@ -22,7 +22,7 @@ export function Navbar() {
 const mapStateToProps = (state) => {
     console.log(state); 
     return {
-
+        
     }
 }
 

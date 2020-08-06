@@ -1,11 +1,11 @@
 // This component should request detailed article information
 import React from 'react'
-import {connect } from 'react-redux'
-import { firestoreConnect} from 'react-redux-firebase'
-import { compose } from 'redux'
+// import { connect } from 'react-redux'
+// import { firestoreConnect} from 'react-redux-firebase'
+// import { compose } from 'redux'
 
 export default function ArticleDetails(props) {
-    const article_id = props.match.params.article_id;
+    // const article_id = props.match.params.article_id;
     function handleClick(e) {
         e.preventDefault();
         console.log('Article Saved');
