@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 
-export default function Navbar() {
+export function Navbar() {
     return(
         <nav className="nav-wrapper blue lighten-2">
             <div className="container">
@@ -15,3 +15,12 @@ export default function Navbar() {
         </nav>
     )
 }
+
+const mapStateToProps = (state) => {
+    console.log(state); 
+    return {
+        
+    }
+}
+
+export default /*connect(mapStateToProps)*/(Navbar)

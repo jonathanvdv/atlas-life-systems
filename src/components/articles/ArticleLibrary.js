@@ -9,7 +9,7 @@ export default function ArticleLibrary({articles}) {
             {/* This section should connect to the atlas library server and show unfiltered articles */}
             { articles && articles.map(article => {
                 return(
-                    <Link to ={'/article/' + article.id}>
+                    <Link to ={'/article/' + article.id} key = {article.id}>
                         <ArticleSummary article = { article } key = { article.id }/>
                     </Link>
                 )
