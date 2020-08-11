@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
-import { auth } from 'firebase'
+// import { auth } from 'firebase'
 
 export class SignIn extends Component {
     state = {

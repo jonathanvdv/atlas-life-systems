@@ -17,7 +17,10 @@ import 'firebase/database'
     measurementId: "G-9J9YLY0F4Y"
   };
   // Initialize Firebase
-  firebase.initializeApp(rrfConfig);
+  if (!firebase.apps.length) {
+    firebase.initializeApp(rrfConfig);
+  }
   firebase.analytics();
+  firebase.auth();
 
   export default firebase;
