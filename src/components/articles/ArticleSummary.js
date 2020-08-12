@@ -1,5 +1,6 @@
 //This component should condense detailed articles into easily previewed cards
 import React from 'react'
+// import ArticleDetails from './ArticleDetails'
 
 export default function ArticleSummary({ article }) {
     return (
