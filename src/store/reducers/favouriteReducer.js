@@ -6,7 +6,7 @@ const initState = {
         { id: '4', title: 'Local Karen embezzles millions from suicide hotline', content: 'Blah blah blahblah. Karen was found dead in her apartment at 5:03 pm Saturday morning after neighbours complained of a foul stench that has been lingering for a few months. blahblah blahblah blahblah blah' },
         { id: '5', title: 'I\'m Vegan', content: 'I know you didnt ask but i just thought you should know. It\'s great. I feel terrible and sick all the time but the animals that are already being slaughtered for consumption by the general populus has not decreased even a little.' }
     ]
- }
+}
 
 export default function favouriteReducer(state = initState, action) { 
     switch (action.type) { 
@@ -21,5 +21,5 @@ export default function favouriteReducer(state = initState, action) {
             return state;
         default:
             return state;
-     }
- }
+    }
+}
