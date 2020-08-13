@@ -13,7 +13,7 @@ export default function ArticleLibrary({articles}) {
                         to={{
                             pathname: "/article/" + article.id,
                             state: { article: article }
-                        }}
+                        }} >
                         <ArticleSummary article = { article } key = { article.id }/>
                     </Link>
                 )
