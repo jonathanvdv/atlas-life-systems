@@ -24,6 +24,5 @@ export default function ArticleLibrary({articles}) {
                 })}
             </Grid>
         </div>
- 
     )
 }
