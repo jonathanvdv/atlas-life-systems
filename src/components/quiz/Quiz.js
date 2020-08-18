@@ -46,6 +46,9 @@ class Quiz extends React.Component {
 
         const { question1, question2, question3, question4, question5, question6, question7, question8, question9 } = this.state;
 
+        const isEnabled = question1 !='none'  && question2 != 'none' > 0 && question3 != 'none' && question4 != 'none' && question5 != 'none'
+            && question6 != 'none' && question7 != 'none' && question8 != 'none' && question9 != 'none';
+
         return (
             <div className="dashboard container">
                 <div className="article-list section"> 
@@ -188,7 +191,7 @@ class Quiz extends React.Component {
                             </div>
                         </ListItem>
                         <ListItem>
-                            <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>
+                            <Button variant="contained" color="primary" disabled={!isEnabled} onClick={this.onSubmit}>Submit</Button>
                         </ListItem>
                     </List>
                 </div>
