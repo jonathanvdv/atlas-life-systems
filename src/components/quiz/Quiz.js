@@ -42,12 +42,11 @@ class Quiz extends React.Component {
 
 
     render() {
-        console.log(this.state)
 
         const { question1, question2, question3, question4, question5, question6, question7, question8, question9 } = this.state;
 
-        const isEnabled = question1 !='none'  && question2 != 'none' > 0 && question3 != 'none' && question4 != 'none' && question5 != 'none'
-            && question6 != 'none' && question7 != 'none' && question8 != 'none' && question9 != 'none';
+        const isEnabled = question1 !=='none'  && question2 !== 'none' && question3 !== 'none' && question4 !== 'none' && question5 !== 'none'
+            && question6 !== 'none' && question7 !== 'none' && question8 !== 'none' && question9 !== 'none';
 
         return (
             <div className="dashboard container">
