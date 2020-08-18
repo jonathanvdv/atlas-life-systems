@@ -1,5 +1,6 @@
 import React /*, { value, handleChange }*/ from 'react'
-
+import { connect } from 'react-redux'
+import { addQuiz } from '../../store/actions/quizActions'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -8,6 +9,8 @@ import FormLabel from '@material-ui/core/FormLabel';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader'
+import Button from '@material-ui/core/Button';
+
 
 class Quiz extends React.Component {
 
@@ -34,7 +37,8 @@ class Quiz extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
-      }
+        this.props.addQuiz(this.state)
+    }
 
 
     render() {
@@ -183,6 +187,9 @@ class Quiz extends React.Component {
                                 </div>
                             </div>
                         </ListItem>
+                        <ListItem>
+                            <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>
+                        </ListItem>
                     </List>
                 </div>
             </div>
@@ -190,4 +197,10 @@ class Quiz extends React.Component {
     }
   } 
 
-  export default Quiz;
+  const mapDispatchToProps = (dispatch) => {
+    return {
+        addQuiz: (quiz) => dispatch(addQuiz(quiz))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Quiz) // first property is mapstatetoprops, then mapdispatchtoprops, thus the null
