@@ -14,27 +14,40 @@ import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase'
 import { reduxFirestore, createFirestoreInstance, getFirestore } from 'redux-firestore'
 import fbConfig from './config/fbConfig'
 import rrfConfig from './config/rrfConfig'
+import { connect } from 'react-redux'
 
 const store = createStore(
   rootReducer, 
   compose(
     applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-    reduxFirestore(fbConfig),
+    reduxFirestore(fbConfig)
   )
 );
+
+const mapStateToProps = (state) => ({
+  authIsLoaded: state.firebase.auth && state.firebase.auth.isLoaded,
+});
+
+const WaitTillAuth = connect(mapStateToProps)(({ authIsLoaded }) => {
+  if(!authIsLoaded) return <div>splash screen...</div>;
+  return (
+    // Components requiring authorization
+    <App />
+  );
+});
 
 const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance
+  createFirestoreInstance,
 }
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = { store }>
       <ReactReduxFirebaseProvider { ...rrfProps }>
-        <App />
+        <WaitTillAuth />
       </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,

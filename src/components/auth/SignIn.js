@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
-import { auth } from 'firebase'
+// import { Link } from 'react-router-dom'
+// import { auth } from 'firebase'
 
 export class SignIn extends Component {
     state = {
@@ -17,6 +18,7 @@ export class SignIn extends Component {
         e.preventDefault();
         this.props.signIn(this.state);
     }
+
     render() {
         const { authError } = this.props;
         return (
@@ -34,7 +36,7 @@ export class SignIn extends Component {
                     <div className="input-field">
                         <button className = "btn red lighten-2 z-depth-0">Login</button>
                         <div className="red-text center">
-                            { authError ? <p>{ authError }</p> : null}
+                            { authError ? <p>{ authError }</p> : null }
                         </div>
                     </div>
                 </form>
