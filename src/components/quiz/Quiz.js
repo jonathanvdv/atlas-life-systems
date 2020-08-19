@@ -1,4 +1,6 @@
 import React /*, { value, handleChange }*/ from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -36,10 +38,13 @@ class Quiz extends React.Component {
 
 
     render() {
+        // const { auth } = this.props;
+        // if (!auth.uid) return <Redirect to = '/signin' />
+        
         console.log(this.state)
 
         const { question1, question2, question3, question4, question5, question6, question7, question8, question9 } = this.state;
-
+        
         return (
             <div>
                 <FormControl component="fieldset">
@@ -126,6 +131,13 @@ class Quiz extends React.Component {
             </div>
         )
     }
-  } 
+} 
 
-  export default Quiz;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
+// export default connect(mapStateToProps)(Quiz);
+export default Quiz

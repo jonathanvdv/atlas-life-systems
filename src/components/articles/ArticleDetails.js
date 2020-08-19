@@ -1,8 +1,12 @@
 // This component should request detailed article information
 import React from 'react'
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
-export default function ArticleDetails(props) {
-    const article = props.location.state.article;
+export function ArticleDetails(props) {
+    const { article } = props.location.state.article;
+    // const { auth } = this.props;
+    // if (!auth.uid) return <Redirect to = '/signin' />
     
     function handleClick(e) {
         e.preventDefault();
@@ -24,3 +28,12 @@ export default function ArticleDetails(props) {
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
+// export default connect(mapStateToProps)(ArticleDetails)
+export default ArticleDetails
