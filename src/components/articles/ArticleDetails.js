@@ -3,8 +3,8 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 
-export function ArticleDetails(props) {
-    const { article } = props.location.state.article;
+export default function ArticleDetails(props) {
+    const  article  = props.location.state.article;
     // const { auth } = this.props;
     // if (!auth.uid) return <Redirect to = '/signin' />
     
@@ -36,4 +36,4 @@ const mapStateToProps = (state) => {
 }
 
 // export default connect(mapStateToProps)(ArticleDetails)
-export default ArticleDetails
+// export default ArticleDetails

@@ -43,8 +43,9 @@ class Quiz extends React.Component {
 
 
     render() {
-        // const { auth } = this.props;
-        // if (!auth.uid) return <Redirect to = '/signin' />
+        const { auth } = this.props;
+        if (!auth.uid) return <Redirect to = '/signin' />
+        
         const { question1, question2, question3, question4, question5, question6, question7, question8, question9 } = this.state;
 
         const isEnabled = question1 !=='none'  && question2 !== 'none' && question3 !== 'none' && question4 !== 'none' && question5 !== 'none'
@@ -213,4 +214,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Quiz) // first property is mapstatetoprops, then mapdispatchtoprops, thus the null
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz) // first property is mapstatetoprops, then mapdispatchtoprops, thus the null

@@ -10,8 +10,8 @@ class Dashboard extends Component {
     render () { 
         // console.log(this.props)
         const { articles } = this.props;
-        // const { auth } = this.props;
-        // if (!auth.uid) return <Redirect to = '/signin' />
+        const { auth } = this.props;
+        if (!auth.uid) return <Redirect to = '/signin' />
 
         return (
             <div className="dashboard container">
@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
     console.log(state); 
     return { 
         articles: state.firestore.ordered.articles,
-        // auth: state.firebase.auth
+        auth: state.firebase.auth
      }
 }
 

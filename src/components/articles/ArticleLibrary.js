@@ -5,9 +5,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid';
 
-export function ArticleLibrary(props, { articles }){
-    // const { auth } = props;
-    // if (!auth.uid) return <Redirect to = '/signin' />
+export default function ArticleLibrary({ articles }){
 
     return ( 
         <div className="article-list section"> 
@@ -30,12 +28,3 @@ export function ArticleLibrary(props, { articles }){
         </div>
     )
 }
-
-const mapStateToProps = (state) => {
-    return {
-        auth: state.firebase.auth
-    }
-}
-
-// export default connect(mapStateToProps)(ArticleLibrary)
-export default ArticleLibrary
