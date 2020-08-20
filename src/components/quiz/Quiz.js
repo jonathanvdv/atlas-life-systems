@@ -1,6 +1,7 @@
 import React /*, { value, handleChange }*/ from 'react'
 import { connect } from 'react-redux'
 import { addQuiz } from '../../store/actions/quizActions'
+import { Link } from 'react-router-dom'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -36,6 +37,7 @@ class Quiz extends React.Component {
         e.preventDefault();
         console.log(this.state);
         this.props.addQuiz(this.state)
+        this.props.history.push("/my-library");
     }
 
 
