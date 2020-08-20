@@ -3,10 +3,10 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 
-export default function ArticleDetails(props) {
+export function ArticleDetails(props) {
     const  article  = props.location.state.article;
-    // const { auth } = this.props;
-    // if (!auth.uid) return <Redirect to = '/signin' />
+    const { auth } = this.props;
+    if (!auth.uid) return <Redirect to = '/signin' />
     
     function handleClick(e) {
         e.preventDefault();
@@ -35,5 +35,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-// export default connect(mapStateToProps)(ArticleDetails)
+export default connect(mapStateToProps)(ArticleDetails)
 // export default ArticleDetails

@@ -15,6 +15,7 @@ import { reduxFirestore, createFirestoreInstance, getFirestore } from 'redux-fir
 import fbConfig from './config/fbConfig'
 import rrfConfig from './config/rrfConfig'
 import { connect } from 'react-redux'
+import logo from './images/logo.png'
 
 const store = createStore(
   rootReducer, 
@@ -29,7 +30,12 @@ const mapStateToProps = (state) => ({
 });
 
 const WaitTillAuth = connect(mapStateToProps)(({ authIsLoaded }) => {
-  if(!authIsLoaded) return <div>splash screen...</div>;
+  if(!authIsLoaded) return (
+    // <div>Loading...</div>,
+    <div styles={{ backgroundImage:`url(${logo})` }}>
+      Loading...
+    </div>
+  );
   return (
     // Components requiring authorization
     <App />
