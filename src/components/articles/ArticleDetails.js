@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 
 export function ArticleDetails(props) {
     const  article  = props.location.state.article;
-    const { auth } = this.props;
+    const { auth } = props;
     if (!auth.uid) return <Redirect to = '/signin' />
     
     function handleClick(e) {
