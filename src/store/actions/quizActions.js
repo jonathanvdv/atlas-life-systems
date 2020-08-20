@@ -9,7 +9,6 @@ export const addQuiz = (quiz) => {
             ...quiz,
             userId: firebase.auth().currentUser.uid,
             date: new Date()
-            
         }).then(() => {
             dispatch({ type: 'ADD_QUIZ', quiz });
         }).catch((err) => {
