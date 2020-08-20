@@ -18,7 +18,7 @@ export default function ArticleDetails(props) {
                         <div>Authors: { article.authors.map((author) => author + " " )} </div>
                         <div>Published: </div>
                     </div>
-                    <p>{article.content}</p>
+                    <p>{article.summary}</p>
                 </div>
             </div>
         </div>
