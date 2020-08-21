@@ -16,7 +16,7 @@ export function ArticleDetails(props) {
         <div className="container section article-details">
             <div className="card z-depth-0">
                 <div className="card-content">
-                <button className = "right btn red lighten-2 z-depth-0" onClick = { handleClick }>Favourite</button>
+                <button className = "right btn red lighten-2 z-depth-0" onClick = { handleClick }>Favorite</button>
                     <span className="card-title">{article.title}</span>
                     <div className="card-action grey-text">
                         <div>Authors: { article.authors.map((author) => author + " " )} </div>

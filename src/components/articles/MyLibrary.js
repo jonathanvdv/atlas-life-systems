@@ -5,7 +5,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-export function FavouriteLibrary() {
+export function MyLibrary() {
     // const { auth } = this.props;
     // if (!auth.uid) return <Redirect to = '/signin' />
     
@@ -23,5 +23,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-// export default connect(mapStateToProps)(FavouriteLibrary)
-export default FavouriteLibrary
+// export default connect(mapStateToProps)(MyLibrary)
+export default MyLibrary

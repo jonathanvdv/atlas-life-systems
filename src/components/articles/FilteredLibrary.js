@@ -2,8 +2,8 @@
 import React from 'react'
 // import ArticleLibrary from './ArticleLibrary'
 // import ArticleSummary from './ArticleSummary'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+// import { connect } from 'react-redux'
+// import { Redirect } from 'react-router-dom'
 
 export function FilteredLibrary() {
     // const { auth } = this.props;
@@ -18,11 +18,11 @@ export function FilteredLibrary() {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        auth: state.firebase.auth
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         auth: state.firebase.auth
+//     }
+// }
 
 // export default connect(mapStateToProps)(FilteredLibrary)
 export default FilteredLibrary

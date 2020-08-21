@@ -1,5 +1,5 @@
 import authReducer from './authReducer'
-import favouriteReducer from './favouriteReducer'
+import favoriteReducer from './favoriteReducer'
 import libraryReducer from './libraryReducer'
 import quizReducer from './quizReducer'
 import { combineReducers } from 'redux'
@@ -9,7 +9,7 @@ import { firebaseReducer } from 'react-redux-firebase'
 const rootReducer = combineReducers({
     auth: authReducer,
     library: libraryReducer,
-    favourite: favouriteReducer,
+    favorite: favoriteReducer,
     quiz: quizReducer,
     firestore: firestoreReducer,
     firebase: firebaseReducer

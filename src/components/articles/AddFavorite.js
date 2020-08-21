@@ -1,10 +1,10 @@
 // This component should change the bool value of the favourited variable
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addFavourite } from '../../store/actions/articleActions'
+import { addFavorite } from '../../store/actions/articleActions'
 import { Redirect } from 'react-router-dom'
 
-export class AddFavourite extends Component{
+export class AddFavorite extends Component{
     state = {
         title: '',
         // authors: [],
@@ -21,7 +21,7 @@ export class AddFavourite extends Component{
     handleSubmit = (e) => {
         e.preventDefault();
         // console.log(this.state);
-        this.props.addFavourite(this.state)
+        this.props.addFavorite(this.state)
     }
     render() {
         const { auth } = this.props;
@@ -30,7 +30,7 @@ export class AddFavourite extends Component{
         return (
             <div className = "container">
                 <form onSubmit = {this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">Add Favourite</h5>
+                    <h5 className="grey-text text-darken-3">Add Favorite</h5>
                     <div className="input-field">
                         <label htmlFor="title">Title</label>
                         <input type = "text" id = "title" onChange = {this.handleChange}/>
@@ -56,8 +56,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addFavourite: (article) => dispatch(addFavourite(article))
+        addFavorite: (article) => dispatch(addFavorite(article))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddFavourite) // first property is mapstatetoprops, then mapdispatchtoprops, thus the null
+export default connect(mapStateToProps, mapDispatchToProps)(AddFavorite) // first property is mapstatetoprops, then mapdispatchtoprops, thus the null

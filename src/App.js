@@ -5,7 +5,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import ArticleDetails from './components/articles/ArticleDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-import AddFavourite from './components/articles/AddFavourite'
+import AddFavorite from './components/articles/AddFavorite'
 import Quiz from './components/quiz/Quiz'
 
 class App extends Component { 
@@ -19,7 +19,7 @@ class App extends Component {
             <Route path = '/article/:article_id' component = { ArticleDetails }/>
             <Route path = '/signin' component = { SignIn }/>
             <Route path = '/signup' component = { SignUp }/>
-            <Route path = '/my-library' component = { AddFavourite }/>
+            <Route path = '/my-library' component = { AddFavorite }/>
             <Route path = '/quiz' component = { Quiz }/>
           </Switch>
         </div>
