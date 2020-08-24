@@ -5,8 +5,9 @@ import Dashboard from './components/dashboard/Dashboard'
 import ArticleDetails from './components/articles/ArticleDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-import AddFavorite from './components/articles/AddFavorite'
+// import AddFavorite from './components/articles/AddFavorite'
 import Quiz from './components/quiz/Quiz'
+import MyLibrary from './components/articles/MyLibrary';
 
 class App extends Component { 
   render(){ 
@@ -19,7 +20,7 @@ class App extends Component {
             <Route path = '/article/:article_id' component = { ArticleDetails }/>
             <Route path = '/signin' component = { SignIn }/>
             <Route path = '/signup' component = { SignUp }/>
-            <Route path = '/my-library' component = { AddFavorite }/>
+            <Route path = '/my-library' component = { MyLibrary }/>
             <Route path = '/quiz' component = { Quiz }/>
           </Switch>
         </div>

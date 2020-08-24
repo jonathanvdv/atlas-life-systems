@@ -1,27 +1,31 @@
 // This library should only contain favourited articles
-import React from 'react'
-// import ArticleLibrary from './ArticleLibrary'
-// import ArticleSummary from './ArticleSummary'
+import React, { Component } from 'react'
+import ArticleLibrary from '../articles/ArticleLibrary'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-export function MyLibrary() {
-    // const { auth } = this.props;
-    // if (!auth.uid) return <Redirect to = '/signin' />
-    
-    return ( 
-        <div className="article-list section"> 
-            {/* This section should connect to the atlas library server and show favourited articles */}
-        </div>
- 
-    )
+export class MyLibrary extends Component {
+    render() {
+        const { auth } = this.props;
+        if (!auth.uid) return <Redirect to = '/signin' />;
+        const { myLibrary } = this.props;
+
+
+        return ( 
+            <div className="dashboard container">
+                <div className="row">
+                    <ArticleLibrary articles = { myLibrary }/>
+                </div>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state) => {
     return {
+        myLibrary: state.firebase.profile.myLibrary,
         auth: state.firebase.auth
     }
 }
 
-// export default connect(mapStateToProps)(MyLibrary)
-export default MyLibrary
+export default connect(mapStateToProps)(MyLibrary)
