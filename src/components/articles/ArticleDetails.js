@@ -41,6 +41,7 @@ export function ArticleDetails(props) {
                         </div>
                         <p>{ article.content }</p>
                     </div>
+                    <p>{article.summary}</p>
                 </div>
             </form>
         </div>
