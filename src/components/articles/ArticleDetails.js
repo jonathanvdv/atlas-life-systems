@@ -13,13 +13,13 @@ export function ArticleDetails(props) {
     
     const  article   = props.location.state.article;
     const { myLibrary } = props;
-    const articleIsInMyLibrary = (myLibrary !== undefined && myLibrary.filter(e => e.id === article.id).length > 0) ? true : false;
+    const articleIsInMyLibrary = (myLibrary !== undefined && myLibrary.filter((e) => e.id === article.id).length > 0) ? true : false;
     // console.log('myLibrary', myLibrary);
     // console.log('articleIsInMyLibrary', articleIsInMyLibrary);
     
-    var buttonText =  articleIsInMyLibrary ? "Saved" : "Favorite";
+    var buttonText =  articleIsInMyLibrary ? "-" : "+";
     var buttonColor =  articleIsInMyLibrary ? "grey lighten-2" : "red lighten-2";
-    var buttonClassName = "right btn " + buttonColor + " z-depth-0";
+    var buttonClassName = `right btn ${buttonColor} z-depth-0`;
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -33,7 +33,7 @@ export function ArticleDetails(props) {
             <form onSubmit={ handleSubmit } className="white">
                 <div className="card z-depth-0">
                     <div className="card-content">
-                    <button className = { buttonClassName } onSubmit={ handleSubmit }>{ buttonText }</button>
+                        <button className={ buttonClassName } onSubmit={ handleSubmit }><b>{ buttonText }</b></button>
                         <span className="card-title">{ article.title }</span>
                         <div className="card-action grey-text">
                             <div>Authors: { article.authors.map((author) => author + " " )} </div>
