@@ -15,12 +15,12 @@ export default function ArticleLibrary({ articles }){
                 {/* This section should connect to the atlas library server and show unfiltered articles */}
                 { articles && articles.map(article => {
                     return(
-                        <Grid item xs={6} md={4}>
+                        <Grid item xs={6} md={4} key={article.id}>
                             <Link
                                 to={{
                                     pathname: "/article/" + article.id,
                                     state: { article: article }
-                                }}>
+                                }} key={article.id}>
                                 <ArticleSummary article = { article } key = { article.id }/>
                             </Link>
                         </Grid>
