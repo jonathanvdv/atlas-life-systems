@@ -1,9 +1,10 @@
 // This component should change the bool value of the favourited variable
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addFavourite } from '../../store/actions/articleActions'
+import { addFavorite } from '../../store/actions/articleActions'
+import { Redirect } from 'react-router-dom'
 
-export class AddFavourite extends Component{
+export class AddFavorite extends Component{
     state = {
         title: '',
         // authors: [],
@@ -20,13 +21,16 @@ export class AddFavourite extends Component{
     handleSubmit = (e) => {
         e.preventDefault();
         // console.log(this.state);
-        this.props.addFavourite(this.state)
+        this.props.addFavorite(this.state)
     }
     render() {
+        const { auth } = this.props;
+        if (!auth.uid) return <Redirect to = '/signin' />
+        
         return (
             <div className = "container">
                 <form onSubmit = {this.handleSubmit} className="white">
-                    <h5 className="grey-text text-darken-3">Add Favourite</h5>
+                    <h5 className="grey-text text-darken-3">Add Favorite</h5>
                     <div className="input-field">
                         <label htmlFor="title">Title</label>
                         <input type = "text" id = "title" onChange = {this.handleChange}/>
@@ -44,10 +48,16 @@ export class AddFavourite extends Component{
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        addFavourite: (article) => dispatch(addFavourite(article))
+        auth: state.firebase.auth
     }
 }
 
-export default connect(null, mapDispatchToProps)(AddFavourite) // first property is mapstatetoprops, then mapdispatchtoprops, thus the null
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addFavorite: (article) => dispatch(addFavorite(article))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddFavorite) // first property is mapstatetoprops, then mapdispatchtoprops, thus the null

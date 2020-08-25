@@ -1,3 +1,6 @@
-const rrfConfig = { userProfile: 'users'}
+const rrfConfig = { 
+    userProfile: 'users',
+    useFirestoreForProfile: true
+}
 
 export default rrfConfig
