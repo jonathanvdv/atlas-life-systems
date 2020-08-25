@@ -13,7 +13,7 @@ export function ArticleDetails(props) {
     
     const  article   = props.location.state.article;
     const { myLibrary } = props;
-    const articleIsInMyLibrary = (myLibrary !== undefined && myLibrary.filter((e) => e === article.id).length > 0) ? true : false;
+    const articleIsInMyLibrary = (myLibrary !== undefined && myLibrary.filter((e) => e.id === article.id).length > 0) ? true : false;
     // console.log('myLibrary', myLibrary);
     // console.log('articleIsInMyLibrary', articleIsInMyLibrary);
     
@@ -25,7 +25,7 @@ export function ArticleDetails(props) {
         e.preventDefault();
         // console.log('myLibrary', myLibrary);
         // console.log('articleIsInMyLibrary', articleIsInMyLibrary);
-        return (articleIsInMyLibrary) ? props.removeFavorite(article.id) : props.addFavorite(article.id);
+        return (articleIsInMyLibrary) ? props.removeFavorite(article) : props.addFavorite(article);
     }
 
     return (

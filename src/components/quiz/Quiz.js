@@ -2,13 +2,13 @@ import React /*, { value, handleChange }*/ from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { addQuiz } from '../../store/actions/quizActions'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-// import ListSubheader from '@material-ui/core/ListSubheader'
+import ListSubheader from '@material-ui/core/ListSubheader'
 import Button from '@material-ui/core/Button';
 
 

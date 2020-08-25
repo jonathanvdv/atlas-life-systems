@@ -1,4 +1,4 @@
-export const addFavorite = (articleId) => {
+export const addFavorite = (article) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // maker async call to database
         const firestore = getFirestore();
@@ -8,16 +8,16 @@ export const addFavorite = (articleId) => {
         const userRef = firestore.collection('users').doc(userId);
 
         userRef.update({
-            myLibrary: firestore.FieldValue.arrayUnion(articleId)
+            myLibrary: firestore.FieldValue.arrayUnion(article)
         }).then(() => {
-            dispatch({ type: 'ADD_FAVORITE', articleId });
+            dispatch({ type: 'ADD_FAVORITE', article });
         }).catch((err) => {
             dispatch({ type: 'ADD_FAVORITE_ERROR', err });
         })
     }
 };
 
-export const removeFavorite = (articleId) => {
+export const removeFavorite = (article) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // maker async call to database
         const firestore = getFirestore();
@@ -27,9 +27,9 @@ export const removeFavorite = (articleId) => {
         const userRef = firestore.collection('users').doc(userId);
 
         userRef.update({
-            myLibrary: firestore.FieldValue.arrayRemove(articleId)
+            myLibrary: firestore.FieldValue.arrayRemove(article)
         }).then(() => {
-            dispatch({ type: 'REMOVE_FAVORITE', articleId });
+            dispatch({ type: 'REMOVE_FAVORITE', article });
         }).catch((err) => {
             dispatch({ type: 'REMOVE_FAVORITE_ERROR', err });
         })
