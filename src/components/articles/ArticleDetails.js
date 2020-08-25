@@ -11,7 +11,7 @@ export function ArticleDetails(props) {
     const { auth } = props;
     if (!auth.uid) return <Redirect to = '/signin' />
     
-    const  article   = props.location.state.article;;
+    const  article   = props.location.state.article;
     const { myLibrary } = props;
     const articleIsInMyLibrary = (myLibrary !== undefined && myLibrary.filter(e => e.id === article.id).length > 0) ? true : false;
     // console.log('myLibrary', myLibrary);
@@ -37,9 +37,9 @@ export function ArticleDetails(props) {
                         <span className="card-title">{ article.title }</span>
                         <div className="card-action grey-text">
                             <div>Authors: { article.authors.map((author) => author + " " )} </div>
-                            <div>Published: </div>
+                            <div>Published: { article.date } </div>
                         </div>
-                        <p>{ article.content }</p>
+                        <p>{ article.summary }</p>
                     </div>
                 </div>
             </form>
