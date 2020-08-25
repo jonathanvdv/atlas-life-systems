@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import ArticleLibrary from '../articles/ArticleLibrary'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 // import { getFirestore } from 'redux-firestore'
 // import { firestoreConnect } from 'react-redux-firebase'
 // import { compose } from 'redux'
@@ -14,19 +16,23 @@ export class MyLibrary extends Component {
 
         // const firestore = getFirestore();
 
-        var { myLibrary } = this.props;
-        
+        const { myLibrary } = this.props;
+        const { articles } = this.props;
+
+
+        var favs = [];
+
         if(myLibrary !== undefined && myLibrary.length > 0) {
-            myLibrary.map(id => this.props.firestore.collection("articles").doc(id))
+            favs = myLibrary.map(id => articles.find(element => element.id === id)) 
         } else {
-            myLibrary = []
+            favs = []
         }
-        console.log("myLibrary", myLibrary)
+        console.log("favs", favs)
          
         return ( 
             <div className="dashboard container">
                 <div className="row">
-                    <ArticleLibrary articles = { myLibrary }/>
+                  
                 </div>
             </div>
         )
@@ -34,10 +40,19 @@ export class MyLibrary extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
+    console.log(state); 
+    return { 
+        articles: state.firestore.ordered.articles,
         myLibrary: state.firebase.profile.myLibrary,
         auth: state.firebase.auth
-    }
+     }
 }
 
-export default connect(mapStateToProps)(MyLibrary)
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'articles'},
+        {collection: 'users'}
+
+    ])
+)(MyLibrary)
