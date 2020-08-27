@@ -33,8 +33,8 @@ export default function ArticleLibrary({ articles }){
     } else {
         return(
             <div>
-                <h5>There are no articles in your My-Library</h5>
-                <h6>You can add articles from your dashboard or the Atlas library</h6>
+                <h5>There are no articles in this Library</h5>
+                <h6>You can add articles from the homepage or the Atlas library</h6>
             </div>
         )
     }

@@ -9,9 +9,9 @@ import { Redirect } from 'react-router-dom'
 class AtlasLibrary extends Component { 
     render () { 
         // console.log(this.props)
-        const { articles } = this.props;
         const { auth } = this.props;
         if (!auth.uid) return <Redirect to = '/signin' />
+        const { articles } = this.props;
 
         return (
             <div className="dashboard container">

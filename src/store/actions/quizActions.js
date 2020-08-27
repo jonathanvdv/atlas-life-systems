@@ -4,10 +4,10 @@ export const addQuiz = (quiz) => {
         const firestore = getFirestore();
         const userId = getState().firebase.auth.uid;
 
-        const userRef = firestore.collection.users.doc(userId);
+        const userRef = firestore.collection('users').doc(userId);
 
         userRef.update({
-            quizBitmaps: firestore.FieldValue.arrayUnion(quiz, new Date())
+            quizBitmaps: firestore.FieldValue.arrayUnion(quiz)
         }).then(() => {
             dispatch({ type: 'ADD_QUIZ', quiz });
         }).catch((err) => {

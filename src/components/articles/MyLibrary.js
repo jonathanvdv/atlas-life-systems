@@ -5,17 +5,16 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-// import { getFirestore } from 'redux-firestore'
-// import { firestoreConnect } from 'react-redux-firebase'
-// import { compose } from 'redux'
 
 export class MyLibrary extends Component {
     render() {
         const { auth } = this.props;
         if (!auth.uid) return <Redirect to = '/signin' />;
+
         const { myLibrary } = this.props;
         const { articles } = this.props;
-        // console.log(articles);
+        // console.log("ml articles",articles);
+        // console.log("mylibrary",myLibrary);
 
         var favs = [];
 

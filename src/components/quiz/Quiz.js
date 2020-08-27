@@ -23,7 +23,8 @@ class Quiz extends React.Component {
         question6: 'none',
         question7: 'none',
         question8: 'none',
-        question9: 'none'
+        question9: 'none',
+        date: new Date()
     };
 
    handleChange = key => (event, value) => {
@@ -37,8 +38,8 @@ class Quiz extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
-        this.props.addQuiz(this.state)
-        this.props.history.push("/my-library");
+        this.props.addQuiz(this.state);
+        this.props.history.push("/");
     }
 
 
