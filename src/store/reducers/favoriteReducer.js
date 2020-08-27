@@ -5,7 +5,7 @@ const initState = {
 export default function favoriteReducer(state = initState, action) { 
     switch (action.type) { 
         case 'ADD_FAVORITE':
-            console.log('added favorite', action.article.id);
+            console.log('Added favorite', action.article.id);
             return{ 
                 ...state,
                 favorites: [...state.favorites, action.article.id]
@@ -14,7 +14,7 @@ export default function favoriteReducer(state = initState, action) {
             console.log('Error adding Favorite', action.err);
             return state;
         case 'REMOVE_FAVORITE':
-             console.log('removed favorite', action.article.id);
+             console.log('Removed favorite', action.article.id);
              return{
                  ...state,
                  favorites: [...state.favorites, action.article.id]

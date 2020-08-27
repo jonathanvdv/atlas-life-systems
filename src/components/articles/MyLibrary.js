@@ -15,8 +15,7 @@ export class MyLibrary extends Component {
         if (!auth.uid) return <Redirect to = '/signin' />;
         const { myLibrary } = this.props;
         const { articles } = this.props;
-        console.log(articles);
-
+        // console.log(articles);
 
         var favs = [];
 
