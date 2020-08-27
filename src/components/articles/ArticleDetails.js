@@ -13,7 +13,7 @@ export function ArticleDetails(props) {
     
     const  article   = props.location.state.article;
     const { myLibrary } = props;
-    const articleIsInMyLibrary = (myLibrary !== undefined && myLibrary.filter((e) => e.id === article.id).length > 0) ? true : false;
+    const articleIsInMyLibrary = (myLibrary !== undefined && myLibrary.filter((e) => e === article.id).length > 0) ? true : false;
     // console.log('myLibrary', myLibrary);
     // console.log('articleIsInMyLibrary', articleIsInMyLibrary);
     
