@@ -11,10 +11,11 @@ class Dashboard extends Component {
 
     render () { 
         const { auth } = this.props;
+        const { quizBitmaps } = this.props;
         if (!auth.uid) return <Redirect to = '/signin' />;
+        if (!quizBitmaps || quizBitmaps.length  < 1) return <Redirect to = '/quiz' />
 
         const filteredLibrarySize = 10;
-        const { quizBitmaps } = this.props;
         const { articles } = this.props;
         
         // these arrays appear to be objects with properties as opposed to arrays
