@@ -2,13 +2,12 @@ export const addFavorite = (article) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // maker async call to database
         const firestore = getFirestore();
-        // const userProfile = getState().firebase.profile;
         const userId = getState().firebase.auth.uid; 
 
         const userRef = firestore.collection('users').doc(userId);
 
         userRef.update({
-            myLibrary: firestore.FieldValue.arrayUnion(article)
+            myLibrary: firestore.FieldValue.arrayUnion(article.id)
         }).then(() => {
             dispatch({ type: 'ADD_FAVORITE', article });
         }).catch((err) => {
@@ -27,7 +26,7 @@ export const removeFavorite = (article) => {
         const userRef = firestore.collection('users').doc(userId);
 
         userRef.update({
-            myLibrary: firestore.FieldValue.arrayRemove(article)
+            myLibrary: firestore.FieldValue.arrayRemove(article.id)
         }).then(() => {
             dispatch({ type: 'REMOVE_FAVORITE', article });
         }).catch((err) => {

@@ -7,7 +7,7 @@ import { signOut } from '../../store/actions/authActions'
 export function SignedInLinks(props) {
     return(
         <ul className = "right">
-            <li><NavLink to ='/library'>Library</NavLink></li>
+            <li><NavLink to ='/atlas-library'>Atlas Library</NavLink></li>
             <li><NavLink to ='/my-library'>My Library</NavLink></li>
             <li><NavLink to = '/quiz'>Quiz</NavLink></li>
             <li><a href = "/#" onClick = {props.signOut}>Sign Out</a></li>

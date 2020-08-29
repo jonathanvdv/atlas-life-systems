@@ -1,4 +1,5 @@
 // This component should change the bool value of the favourited variable
+// I believe this component is obsolete
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addFavorite } from '../../store/actions/articleActions'

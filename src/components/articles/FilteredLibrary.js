@@ -1,3 +1,5 @@
+/************************ THIS COMPONENT IS NOW OBSOLETE *************************/
+/******************* ITS FUNCTIONALITY WAS MOVED TO DASHBOARD ********************/
 // This component should filter or connect to a filtered databse of articles
 import React from 'react'
 // import ArticleLibrary from './ArticleLibrary'

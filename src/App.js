@@ -8,6 +8,7 @@ import SignUp from './components/auth/SignUp'
 // import AddFavorite from './components/articles/AddFavorite'
 import Quiz from './components/quiz/Quiz'
 import MyLibrary from './components/articles/MyLibrary';
+import AtlasLibrary from './components/articles/AtlasLibrary';
 
 class App extends Component { 
   render(){ 
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path = '/article/:article_id' component = { ArticleDetails }/>
             <Route path = '/signin' component = { SignIn }/>
             <Route path = '/signup' component = { SignUp }/>
+            <Route path = '/atlas-library' component = { AtlasLibrary }/>
             <Route path = '/my-library' component = { MyLibrary }/>
             <Route path = '/quiz' component = { Quiz }/>
           </Switch>
