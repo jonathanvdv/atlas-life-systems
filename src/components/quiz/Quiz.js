@@ -10,10 +10,10 @@ import QuizSubmitted from './QuizSubmitted';
 
 class Quiz extends React.Component {
     
-
     // Checks if the quiz was submitted within the last 2 weeks
     checkIfSubmitted(quizBitmaps) {
 
+        
         if (quizBitmaps !== undefined && quizBitmaps.length > 0) {
 
             // Get most recent quiz date in seconds
@@ -21,7 +21,11 @@ class Quiz extends React.Component {
             // Get current date in seconds
             const currentDate = new Date().valueOf() / 1000;
             // Two weeks in seconds
-            const twoWeeks = 1209600;
+            
+            // TO DO: CHANGE THIS
+            const twoWeeks = 60;
+
+            //const twoWeeks = 1209600;
             
             console.log('current', currentDate);
             console.log('quiz date', quizDate);
@@ -33,7 +37,6 @@ class Quiz extends React.Component {
         else {
             return false;
         }
-
     }
 
 
@@ -50,8 +53,6 @@ class Quiz extends React.Component {
         else {
             return(<QuizQuestions></QuizQuestions>);
         }
-     
-        
     }
 } 
 
