@@ -1,7 +1,6 @@
 import React /*, { value, handleChange }*/ from 'react'
 import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase';
-import { Redirect } from 'react-router-dom'
+
 import { addQuiz } from '../../store/actions/quizActions'
 import { compose } from 'redux';
 
@@ -43,7 +42,6 @@ class QuizQuestions extends React.Component {
     }
 
     render() {
-        const { quizBitmaps } = this.props;
 
         const { question1, question2, question3, question4, question5, question6, question7, question8, question9 } = this.state;
 
@@ -188,7 +186,6 @@ class QuizQuestions extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        quizBitmaps: state.firebase.profile.quizBitmaps,
         auth: state.firebase.auth
     }
 }
@@ -199,9 +196,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    firestoreConnect([
-        {collection: 'users'}
-    ])
-)(QuizQuestions)
+export default compose(connect(mapStateToProps, mapDispatchToProps))(QuizQuestions)
