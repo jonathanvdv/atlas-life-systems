@@ -37,7 +37,6 @@ class Quiz extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
         this.props.addQuiz(this.state);
         this.props.history.push("/");
     }

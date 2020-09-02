@@ -14,8 +14,6 @@ export function ArticleDetails(props) {
     const  article   = props.location.state.article;
     const { myLibrary } = props;
     const articleIsInMyLibrary = (myLibrary !== undefined && myLibrary.filter((e) => e === article.id).length > 0) ? true : false;
-    // console.log('myLibrary', myLibrary);
-    // console.log('articleIsInMyLibrary', articleIsInMyLibrary);
     
     var buttonText =  articleIsInMyLibrary ? "-" : "+";
     var buttonColor =  articleIsInMyLibrary ? "grey lighten-2" : "red lighten-2";
@@ -23,8 +21,6 @@ export function ArticleDetails(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // console.log('myLibrary', myLibrary);
-        // console.log('articleIsInMyLibrary', articleIsInMyLibrary);
         return (articleIsInMyLibrary) ? props.removeFavorite(article) : props.addFavorite(article);
     }
 
@@ -39,9 +35,33 @@ export function ArticleDetails(props) {
                             <div>Authors: { article.authors.map((author) => author + " " )} </div>
                             <div>Published: { article.date } </div>
                         </div>
-                        <p>{ article.summary }</p>
                     </div>
+                    <div><b>Summary:</b></div>
                     <p>{article.summary}</p>
+                    <div>
+                        <div><b>Referenced Findings:</b></div>
+                        <p>
+                            {article.referencedFindings.map(finding => {
+                                return <li>{finding}</li>
+                            }
+                            )}
+                        </p>
+                    </div>
+                    <div className="wellnessTask-list section">
+                    <div><b>Wellness Tasks:</b></div>
+                        <div className="card z-depth-0 task-summary">
+                            <div className="card-content">
+                                
+                                <div className="row">
+                                    {article.wellnessTasks.map( task => {
+                                        return <div className="col s4">{task}</div>
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+ 
+
+                    </div>
                 </div>
             </form>
         </div>
