@@ -33,11 +33,11 @@ class QuizQuestions extends React.Component {
         this.setState({
           [key]: value
         });
+        this.setState({ date: new Date()});
     };
 
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
         this.props.addQuiz(this.state);
     }
 
