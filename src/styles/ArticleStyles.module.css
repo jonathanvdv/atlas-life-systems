@@ -1,0 +1,19 @@
+.button {
+    font-weight: 2000; 
+    font-size: 30px;
+    margin: auto;
+    height: 40px;
+    width: 50px;
+    text-align: center;
+}
+
+.header {
+    font-size: 20px;
+    font-weight: 2000;
+}
+
+.tasks {
+    font-size: 20px;
+    font-weight: 2000;
+    margin-bottom: 100em;
+}

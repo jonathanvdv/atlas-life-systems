@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
-
+import styles from '../../styles/ArticleStyles.module.css'
 
 export function ArticleDetails(props) {
     const { auth } = props;
@@ -17,29 +17,34 @@ export function ArticleDetails(props) {
     
     var buttonText =  articleIsInMyLibrary ? "-" : "+";
     var buttonColor =  articleIsInMyLibrary ? "grey lighten-2" : "red lighten-2";
-    var buttonClassName = `right btn ${buttonColor} z-depth-0`;
+    var buttonClassName = `right btn ${buttonColor} z-depth-0 ${styles.button}`;
 
     function handleSubmit(e) {
         e.preventDefault();
         return (articleIsInMyLibrary) ? props.removeFavorite(article) : props.addFavorite(article);
     }
-
+    
+    // Conditional field rendering - checks if article property exists/is not null
+    var taskExists =  (article.wellnessTasks.length > 0 && article.wellnessTasks !== undefined) ? true : false;
+    // var refFindingsExists = (article.referencedFindings.length > 0 && article.referencedFindings !== undefined) ? true : false;
     return (
         <div className="container section article-details">
             <form onSubmit={ handleSubmit } className="white">
                 <div className="card z-depth-0">
                     <div className="card-content">
-                        <button className={ buttonClassName } onSubmit={ handleSubmit }><b>{ buttonText }</b></button>
+                        <button className={ buttonClassName } onSubmit={ handleSubmit }>{ buttonText }</button>
                         <span className="card-title">{ article.title }</span>
                         <div className="card-action grey-text">
                             <div>Authors: { article.authors.map((author) => author + " " )} </div>
                             <div>Published: { article.date } </div>
                         </div>
                     </div>
-                    <div><b>Summary:</b></div>
-                    <p>{article.summary}</p>
                     <div>
-                        <div><b>Referenced Findings:</b></div>
+                        <b className={styles.header}>Summary:</b>
+                        <p>{article.summary}</p>
+                    </div>
+                    <div>
+                        <b className={styles.header}>Referenced Findings:</b>
                         <p>
                             {article.referencedFindings.map(finding => {
                                 return <li>{finding}</li>
@@ -48,19 +53,20 @@ export function ArticleDetails(props) {
                         </p>
                     </div>
                     <div className="wellnessTask-list section">
-                    <div><b>Wellness Tasks:</b></div>
-                        <div className="card z-depth-0 task-summary">
-                            <div className="card-content">
-                                
+                    <div><b className={styles.header}>Wellness Tasks:</b></div>
+                                <br></br>
                                 <div className="row">
-                                    {article.wellnessTasks.map( task => {
-                                        return <div className="col s4">{task}</div>
-                                    })}
+                                        {taskExists ? (
+                                                article.wellnessTasks.map( 
+                                                    task => {
+                                                        return <div className="col s4">{task}</div>
+                                                    }
+                                                )
+                                            ) : (
+                                                <div>There are no wellness tasks for this article</div>
+                                            )
+                                        }
                                 </div>
-                            </div>
-                        </div>
- 
-
                     </div>
                 </div>
             </form>

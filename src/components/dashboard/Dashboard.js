@@ -9,11 +9,19 @@ import { dot } from 'mathjs';
 
 class Dashboard extends Component { 
 
+    quizExists = (quizBitmaps) => {
+        if ((quizBitmaps !== undefined || !quizBitmaps) || quizBitmaps.length  < 1) {
+            return false
+        } else {
+            return true
+        }
+    }
+
     render () { 
         const { auth } = this.props;
         const { quizBitmaps } = this.props;
         if (!auth.uid) return <Redirect to = '/signin' />;
-        if (!quizBitmaps || quizBitmaps.length  < 1) return <Redirect to = '/quiz' />
+        if (this.quizExists(quizBitmaps)) return <Redirect to = '/quiz' />
 
         const filteredLibrarySize = 10;
         const { articles } = this.props;
