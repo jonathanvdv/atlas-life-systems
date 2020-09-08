@@ -10,6 +10,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 
 class QuizQuestions extends React.Component {
@@ -175,7 +177,12 @@ class QuizQuestions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <Button variant="contained" color="primary" disabled={!isEnabled} onClick={this.onSubmit}>Submit</Button>
+                        <Popup trigger={                        
+                        <Button variant="contained" color="primary" disabled={!isEnabled}>Submit</Button>} position="right center" modal>
+                            <div>Are you sure you want to submit your questionnairre? You cannot change your answers once submitted!</div>
+                            <Button variant="contained" color="primary" onClick={this.onSubmit}>Submit</Button>
+                            <Button variant="contained" color="secondary">Cancel</Button>
+                        </Popup>
                     </div>
                 </div>
             </div>
