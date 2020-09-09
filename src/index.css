@@ -15,7 +15,7 @@ body {
 body::after {
   content: "";
   background-image: url('./images/grass.jpg');
-  opacity: 0.7;
+  opacity: 0.69;
   background-size: cover;
   top: 0;
   left: 0;
