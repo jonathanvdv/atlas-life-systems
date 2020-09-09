@@ -54,8 +54,8 @@ export function ArticleDetails(props) {
                     </div>
                     <div className="wellnessTask-list section">
                     <div><b className={styles.header}>Wellness Tasks:</b></div>
-                                <br></br>
-                                <div className="row">
+                                {/* <br></br> */}
+                                <div className={`row ${styles.tasks}`}>
                                         {taskExists ? (
                                                 article.wellnessTasks.map( 
                                                     task => {
