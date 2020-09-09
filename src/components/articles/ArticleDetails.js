@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom';
 import styles from '../../styles/ArticleStyles.module.css'
 
 export function ArticleDetails(props) {
+    
     const { auth } = props;
     if (!auth.uid) return <Redirect to = '/signin' />
     
@@ -28,12 +29,17 @@ export function ArticleDetails(props) {
     var taskExists =  (article.wellnessTasks.length > 0 && article.wellnessTasks !== undefined) ? true : false;
     // var refFindingsExists = (article.referencedFindings.length > 0 && article.referencedFindings !== undefined) ? true : false;
     return (
+        
         <div className="container section article-details">
             <form onSubmit={ handleSubmit } className="white">
                 <div className="card z-depth-0">
                     <div className="card-content">
                         <button className={ buttonClassName } onSubmit={ handleSubmit }>{ buttonText }</button>
-                        <span className="card-title">{ article.title }</span>
+                        {articleIsInMyLibrary ? (
+                                <span className={`${styles.savedTitle}`}>{ article.title }</span>
+                            ) : (
+                                <span className={`${styles.unsavedTitle}`}>{ article.title }</span>
+                        )}
                         <div className="card-action grey-text">
                             <div>Authors: { article.authors.map((author) => author + " " )} </div>
                             <div>Published: { article.date } </div>

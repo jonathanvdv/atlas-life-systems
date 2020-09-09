@@ -1,18 +1,31 @@
 .button {
     font-weight: 2000; 
-    font-size: 30px;
+    font-size: 25px;
     margin: auto;
     height: 40px;
     width: 50px;
     text-align: center;
 }
 
-/* .title {
+.savedTitle {
+    font-size: 30px;
+    font-weight: 700;
+    height: 40px;
+    padding-right: 20px;
+    color: #8acf88;
+}
 
-} */
+.unsavedTitle {
+    font-size: 30px;
+    font-weight: 700;
+    height: 40px;
+    margin: auto;
+    padding-right: 20px; 
+    color: #6eb5ff;
+}
 
 .header {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 2000;
 }
 
@@ -36,3 +49,4 @@
 /* .date {
 
 } */
+/* background color change to pastel green/yellow */

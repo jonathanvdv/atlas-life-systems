@@ -8,8 +8,21 @@ body {
 
   background-size: 100%;
   background-position: bottom;
-  background-color: #C2DFFF;
+  /* background:linear-gradient(to bottom, #8eadf5, #a8c9cf); */
   min-height: 100%;
+}
+
+body::after {
+  content: "";
+  background-image: url('./images/grass.jpg');
+  opacity: 0.7;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 form{
   padding: 20px;

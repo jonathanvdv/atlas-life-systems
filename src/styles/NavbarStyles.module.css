@@ -1,0 +1,18 @@
+.background {
+    background-image: url("../images/cloudy-sky.jpg");
+    background-size: cover;
+}
+
+.links {
+    font-family: calibri;
+    font-weight: 700;
+    font-size: 18px;
+    color: #414ba1;
+}
+
+.title {
+    font-family: calibri;
+    color: #ffffff;
+    font-size: 33px;
+    font-weight: 700;
+}
