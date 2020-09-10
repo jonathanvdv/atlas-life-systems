@@ -41,7 +41,11 @@ export function ArticleDetails(props) {
                                 <span className={`${styles.unsavedTitle}`}>{ article.title }</span>
                         )}
                         <div className="card-action grey-text">
-                            <div>Authors: { article.authors.map((author) => author + " " )} </div>
+                            <div>Authors: { article.authors.map(function (author, index) {
+                                return <span>{(index ? ", " : '') + author}</span>
+                                }) 
+                            }
+                            </div>
                             <div>Published: { article.date } </div>
                         </div>
                     </div>
