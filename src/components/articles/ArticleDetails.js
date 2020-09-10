@@ -31,7 +31,7 @@ export function ArticleDetails(props) {
     return (
         
         <div className="container section article-details">
-            <form onSubmit={ handleSubmit } className="white">
+            <form onSubmit={ handleSubmit } className="white z-depth-1">
                 <div className="card z-depth-0">
                     <div className="card-content">
                         <button className={ buttonClassName } onSubmit={ handleSubmit }>{ buttonText }</button>

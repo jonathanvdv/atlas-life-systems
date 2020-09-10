@@ -12,8 +12,7 @@ class Quiz extends React.Component {
     // Checks if the quiz was submitted within the last 2 weeks
     checkIfSubmitted(quizBitmaps) {
 
-        
-        if (quizBitmaps !== undefined && quizBitmaps.length > 0) {
+        if (quizBitmaps !== undefined && quizBitmaps.length > 0 && quizBitmaps[quizBitmaps.length - 1].date !== undefined) {
 
             // Get most recent quiz date in seconds
             const quizDate = Math.max.apply(Math, quizBitmaps.map(quiz => quiz.date).map(time => time.seconds));

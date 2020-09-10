@@ -12,7 +12,7 @@
     font-weight: 700;
     height: 40px;
     padding-right: 20px;
-    color: #8acf88;
+    color: #65da5a;
 }
 
 .unsavedTitle {
@@ -21,10 +21,11 @@
     height: 40px;
     margin: auto;
     padding-right: 20px; 
-    color: #6eb5ff;
+    color: #55a5fa;
 }
 
 .header {
+    color: #263a5f;
     font-size: 18px;
     font-weight: 2000;
 }

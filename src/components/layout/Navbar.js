@@ -13,7 +13,9 @@ export function Navbar(props) {
     return(
         <nav className={`nav-wrapper ${ styles.background }`}>
             <div className="container">
-                <Link to = '/' className = { styles.title } >Atlas Life Systems</Link>
+                <Link to = '/' className = {`left ${ styles.title }`} > 
+                <div className = {`left ${ styles.icon }`} ></div>
+                Atlas Life Systems</Link>
                 { links }
             </div>
         </nav>
