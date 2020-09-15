@@ -12,17 +12,8 @@
     font-family: calibri;
     font-weight: 700;
     font-size: 20px;
-    color: #ffffff;
-    text-shadow: 2px 2px 0 #535353, -1px -1px 0 #535353, -1px 1px 0 #535353, 1px -1px 0 #535353;
-    position: relative;
-}
-
-.signedOutLinks {
-    font-family: calibri;
-    font-weight: 700;
-    font-size: 20px;
-    color: #ffffff;
-    text-shadow: 2px 2px 0 #535353, -1px -1px 0 #535353, -1px 1px 0 #535353, 1px -1px 0 #535353;
+    color: #4163a1;
+    text-shadow: 1px 2px #afdaf1;
     position: relative;
 }
 
@@ -31,14 +22,13 @@
     color: #ffffff;
     font-size: 35px;
     font-weight: 700;
-    text-shadow: 2px 2px 0 #535353, -1px -1px 0 #535353, -1px 1px 0 #535353, 1px -1px 0 #535353;
+    text-shadow: 2px 2px #8d8d8d;
 }
 
 .icon {
     background: url('../images/logo.png');
     background-size: contain;
     background-position: center;
-    background-blend-mode: darken;
     /* background-attachment: fixed; */
     position: relative;
     top: 14px;
