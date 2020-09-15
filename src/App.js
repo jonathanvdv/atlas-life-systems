@@ -5,7 +5,6 @@ import Dashboard from './components/dashboard/Dashboard'
 import ArticleDetails from './components/articles/ArticleDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-// import AddFavorite from './components/articles/AddFavorite'
 import Quiz from './components/quiz/Quiz'
 import MyLibrary from './components/articles/MyLibrary';
 import AtlasLibrary from './components/articles/AtlasLibrary';

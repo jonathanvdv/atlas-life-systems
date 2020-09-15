@@ -13,7 +13,6 @@ import Button from '@material-ui/core/Button';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-
 class QuizQuestions extends React.Component {
     
     state = {
@@ -54,13 +53,13 @@ class QuizQuestions extends React.Component {
             <div className="dashboard container">
                 <div className="article-list section"> 
                     <div className="container section article-details">
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <span className="card-title">Patient Health Questionnaire</span>
                                 <h6 className="grey-text">Over the last 2 weeks, how often have you been bothered by any of the following problems? </h6>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>1. Little interest or pleasure in doing things</FormLabel>
@@ -73,7 +72,7 @@ class QuizQuestions extends React.Component {
                                 </FormControl> 
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>2. Feeling down, depressed, or hopeless</FormLabel>
@@ -86,7 +85,7 @@ class QuizQuestions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>3. Trouble falling or staying asleep, or sleeping too much</FormLabel>
@@ -99,7 +98,7 @@ class QuizQuestions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>4. Feeling tired or having little energy</FormLabel>
@@ -112,7 +111,7 @@ class QuizQuestions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>5. Poor appetite or overeating</FormLabel>
@@ -125,7 +124,7 @@ class QuizQuestions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>6. Feeling bad about yourself – or that you are a failure or have let yourself or your family down</FormLabel>
@@ -138,7 +137,7 @@ class QuizQuestions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>7. Trouble concentrating on things, such as reading the newspaper or watching television</FormLabel>
@@ -151,7 +150,7 @@ class QuizQuestions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>8. Moving or speaking so slowly that other people could have noticed? Or the opposite – being so fidgety or restless that you have been moving around a lot more than usual</FormLabel>
@@ -164,7 +163,7 @@ class QuizQuestions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>9. Thoughts that you would be better off dead or of hurting yourself insome way</FormLabel>
