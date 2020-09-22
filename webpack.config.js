@@ -1,3 +1,4 @@
+const ManifestPlugin = require("webpack-manifest-plugin")
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
@@ -33,5 +34,5 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist'
-  }
+  },
   };
