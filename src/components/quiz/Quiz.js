@@ -2,7 +2,6 @@ import React /*, { value, handleChange }*/ from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom'
-import { addQuiz } from '../../store/actions/quizActions'
 import { compose } from 'redux';
 import QuizQuestions from '../quiz/QuizQuestions'
 import QuizSubmitted from './QuizSubmitted';
@@ -13,8 +12,7 @@ class Quiz extends React.Component {
     // Checks if the quiz was submitted within the last 2 weeks
     checkIfSubmitted(quizBitmaps) {
 
-        
-        if (quizBitmaps !== undefined && quizBitmaps.length > 0) {
+        if (quizBitmaps !== undefined && quizBitmaps.length > 0 && quizBitmaps[quizBitmaps.length - 1].date !== undefined) {
 
             // Get most recent quiz date in seconds
             const quizDate = Math.max.apply(Math, quizBitmaps.map(quiz => quiz.date).map(time => time.seconds));

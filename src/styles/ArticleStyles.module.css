@@ -1,0 +1,53 @@
+.button {
+    font-weight: 2000; 
+    font-size: 25px;
+    margin: auto;
+    height: 40px;
+    width: 50px;
+    text-align: center;
+}
+
+.savedTitle {
+    font-size: 30px;
+    font-weight: 700;
+    height: 40px;
+    padding-right: 20px;
+    color: #65da5a;
+}
+
+.unsavedTitle {
+    font-size: 30px;
+    font-weight: 700;
+    height: 40px;
+    margin: auto;
+    padding-right: 20px; 
+    color: #55a5fa;
+}
+
+.header {
+    color: #263a5f;
+    font-size: 18px;
+    font-weight: 2000;
+}
+
+.tasks {
+    margin-top: 1em;
+    font-size: 15px;
+}
+
+/* .summary {
+
+} */
+
+/* .findings {
+
+} */
+
+/* .authors {
+
+} */
+
+/* .date {
+
+} */
+/* background color change to pastel green/yellow */

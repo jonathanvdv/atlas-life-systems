@@ -4,15 +4,18 @@ import {Link} from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect} from 'react-redux'
+import styles from '../../styles/NavbarStyles.module.css'
 
 export function Navbar(props) {
     const { auth, profile } = props;
     // console.log(auth);
     const links = auth.uid ? <SignedInLinks profile={profile}/> : <SignedOutLinks />;
     return(
-        <nav className="nav-wrapper blue lighten-2">
+        <nav className={`nav-wrapper ${ styles.background }`}>
             <div className="container">
-                <Link to = '/' className = "left brand-logo">Atlas Life Systems</Link>
+                <Link to = '/' className = {`left ${ styles.title }`} > 
+                <div className = {`left ${ styles.icon }`} ></div>
+                Atlas Life Systems</Link>
                 { links }
             </div>
         </nav>

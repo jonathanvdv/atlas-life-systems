@@ -1,0 +1,42 @@
+.background {
+    background-image: url("../images/cloudy-sky.jpg");
+    background-size: cover;
+    resize: auto hidden;
+    overflow: auto visible;
+    width: 100%;
+    height: auto;
+    /* opacity: 0.9; */
+}
+
+.links {
+    font-family: calibri;
+    font-weight: 700;
+    font-size: 20px;
+    color: #4163a1;
+    text-shadow: 1px 2px #afdaf1;
+    position: relative;
+}
+
+.title {
+    font-family: calibri;
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: 700;
+    text-shadow: 2px 2px #8d8d8d;
+}
+
+.icon {
+    background: url('../images/logo.png');
+    background-size: contain;
+    background-position: center;
+    /* background-attachment: fixed; */
+    position: relative;
+    top: 14px;
+    left: 0;
+    bottom: 10px;
+    right: 20px;
+
+    width: 40px;
+    height: 40px;
+    padding: 5px 5px;
+}
