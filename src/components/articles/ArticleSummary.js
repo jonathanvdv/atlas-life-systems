@@ -71,7 +71,7 @@ export default function ArticleSummary({ article }) {
                 <div className="card-content blue-text text-darken-3">
                     <span className="card-title">{ article.title }</span>
                     <p className="grey-text">Authors: { article.authors.map(function (author, index) {
-                                return <span>{(index ? ", " : '') + author}</span>
+                                return <span key={ index }>{(index ? ", " : '') + author}</span>
                                 }) 
                             }
                     </p>
