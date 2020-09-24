@@ -9,6 +9,7 @@ import SignUp from './components/auth/SignUp'
 import Quiz from './components/quiz/Quiz'
 import MyLibrary from './components/articles/MyLibrary';
 import AtlasLibrary from './components/articles/AtlasLibrary';
+import '../public/manifest.json';
 
 class App extends Component { 
   render(){ 
