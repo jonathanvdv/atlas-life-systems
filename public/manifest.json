@@ -1,9 +1,7 @@
 {
   "short_name": "caregiver-app",
   "name": "atlas-life-systems-caregiver",
-  "icons": [
-
-  ],
+  
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
