@@ -9,8 +9,8 @@ import { dot } from 'mathjs';
 
 class Dashboard extends Component { 
 
-    quizExists = (quizBitmaps) => {
-        if ((quizBitmaps !== undefined || !quizBitmaps) || quizBitmaps.length  < 1) {
+    quizExists = (phq9Bitmaps) => {
+        if ((phq9Bitmaps !== undefined || !phq9Bitmaps) || phq9Bitmaps.length  < 1) {
             return false
         } else {
             return true
@@ -19,9 +19,9 @@ class Dashboard extends Component {
 
     render () { 
         const { auth } = this.props;
-        const { quizBitmaps } = this.props;
+        const { phq9Bitmaps } = this.props;
         if (!auth.uid) return <Redirect to = '/signin' />;
-        if (this.quizExists(quizBitmaps)) return <Redirect to = '/quiz' />
+        if (this.quizExists(phq9Bitmaps)) return <Redirect to = '/quiz' />
 
         const filteredLibrarySize = 10;
         const { articles } = this.props;
@@ -31,8 +31,8 @@ class Dashboard extends Component {
         var mostRecentQuiz = [];
         var orderedMostRecentQuiz = [];
         var mostRecentQuizBitmap = [];
-        if (quizBitmaps !== undefined && quizBitmaps.length > 0) {
-            mostRecentQuiz = quizBitmaps[quizBitmaps.length - 1];
+        if (phq9Bitmaps !== undefined && phq9Bitmaps.length > 0) {
+            mostRecentQuiz = phq9Bitmaps[phq9Bitmaps.length - 1];
             delete mostRecentQuiz.date;
             Object.keys(mostRecentQuiz).sort().forEach((key) => {
                 orderedMostRecentQuiz[key] = mostRecentQuiz[key];
@@ -83,7 +83,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     return { 
         articles: state.firestore.ordered.articles,
-        quizBitmaps: state.firebase.profile.quizBitmaps,
+        phq9Bitmaps: state.firebase.profile.phq9Bitmaps,
         auth: state.firebase.auth
      }
 }

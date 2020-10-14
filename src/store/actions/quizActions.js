@@ -7,7 +7,7 @@ export const addQuiz = (quiz) => {
         const userRef = firestore.collection('users').doc(userId);
 
         userRef.update({
-            quizBitmaps: firestore.FieldValue.arrayUnion(quiz)
+            phq9Bitmaps: firestore.FieldValue.arrayUnion(quiz)
         }).then(() => {
             dispatch({ type: 'ADD_QUIZ', quiz });
         }).catch((err) => {

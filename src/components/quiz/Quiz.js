@@ -10,12 +10,12 @@ import QuizSubmitted from './QuizSubmitted';
 class Quiz extends React.Component {
     
     // Checks if the quiz was submitted within the last 2 weeks
-    checkIfSubmitted(quizBitmaps) {
+    checkIfSubmitted(phq9Bitmaps) {
 
-        if (quizBitmaps !== undefined && quizBitmaps.length > 0 && quizBitmaps[quizBitmaps.length - 1].date !== undefined) {
+        if (phq9Bitmaps !== undefined && phq9Bitmaps.length > 0 && phq9Bitmaps[phq9Bitmaps.length - 1].date !== undefined) {
 
             // Get most recent quiz date in seconds
-            const quizDate = Math.max.apply(Math, quizBitmaps.map(quiz => quiz.date).map(time => time.seconds));
+            const quizDate = Math.max.apply(Math, phq9Bitmaps.map(quiz => quiz.date).map(time => time.seconds));
             // Get current date in seconds
             const currentDate = new Date().valueOf() / 1000;
             // Two weeks in seconds
@@ -40,8 +40,8 @@ class Quiz extends React.Component {
 
     render() {
         const { auth } = this.props;
-        const { quizBitmaps } = this.props;
-        const isSubmitted = this.checkIfSubmitted(quizBitmaps);
+        const { phq9Bitmaps } = this.props;
+        const isSubmitted = this.checkIfSubmitted(phq9Bitmaps);
 
         if (!auth.uid) return <Redirect to = '/signin' />
 
@@ -56,7 +56,7 @@ class Quiz extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        quizBitmaps: state.firebase.profile.quizBitmaps,
+        phq9Bitmaps: state.firebase.profile.phq9Bitmaps,
         auth: state.firebase.auth
     }
 }
