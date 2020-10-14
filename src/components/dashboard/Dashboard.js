@@ -9,43 +9,38 @@ import { dot } from 'mathjs';
 
 class Dashboard extends Component { 
 
-    quizExists = (phq9Bitmaps) => {
-        if ((phq9Bitmaps !== undefined || !phq9Bitmaps) || phq9Bitmaps.length  < 1) {
+    quizExists = (quizBitmaps) => {
+        if ((quizBitmaps !== undefined || !quizBitmaps) || quizBitmaps.length  < 1) {
             return false
         } else {
             return true
         }
     }
-
-    render () { 
-        const { auth } = this.props;
-        const { phq9Bitmaps } = this.props;
-        if (!auth.uid) return <Redirect to = '/signin' />;
-        if (this.quizExists(phq9Bitmaps)) return <Redirect to = '/quiz' />
-
-        const filteredLibrarySize = 10;
-        const { articles } = this.props;
-        
-        // these arrays appear to be objects with properties as opposed to arrays
-        // cant use array methods, need to use object methods
+    
+    getMostRecentQuizBitmap = (quizBitmaps) => {
         var mostRecentQuiz = [];
         var orderedMostRecentQuiz = [];
-        var mostRecentQuizBitmap = [];
-        if (phq9Bitmaps !== undefined && phq9Bitmaps.length > 0) {
-            mostRecentQuiz = phq9Bitmaps[phq9Bitmaps.length - 1];
+
+        if (quizBitmaps !== undefined && quizBitmaps.length > 0) {
+            mostRecentQuiz = quizBitmaps[quizBitmaps.length - 1];
             delete mostRecentQuiz.date;
+            delete mostRecentQuiz.quizName;
             Object.keys(mostRecentQuiz).sort().forEach((key) => {
                 orderedMostRecentQuiz[key] = mostRecentQuiz[key];
               });
-            mostRecentQuizBitmap = Object.values(orderedMostRecentQuiz);
+            return Object.values(orderedMostRecentQuiz);
         } else {
             mostRecentQuiz = [];
-            mostRecentQuizBitmap = [];
+            return [];
         }
+    }
 
+    sortArticles = (articles, mostRecentQuizBitmap, filteredLibrarySize) => {
+        
         var articleRank;
         var rankedArticles = [];
         var sortedArticles = [];
+
         if (articles !== undefined && articles.length > 0 && mostRecentQuizBitmap.length > 0) {
                 rankedArticles = articles.map(article => {
                     if (mostRecentQuizBitmap.length === article.bitmap.length) {
@@ -70,10 +65,35 @@ class Dashboard extends Component {
                 return article.rankedArticle.article
             })
         }
+        return sortedArticles;
+    }
+
+    render () { 
+        const { auth } = this.props;
+        const { phq9Bitmaps } = this.props;
+        const { gad7Bitmaps } = this.props;
+        if (!auth.uid) return <Redirect to = '/signin' />;
+        if (this.quizExists(phq9Bitmaps)) return <Redirect to = '/phq9' />;
+        if (this.quizExists(gad7Bitmaps)) return <Redirect to = '/gad7' />;
+
+        const filteredLibrarySize = 10;
+        const { articles } = this.props;
+        
+        // these arrays appear to be objects with properties as opposed to arrays
+        // cant use array methods, need to use object methods
+
+        var mostRecentPHQ9Bitmap = this.getMostRecentQuizBitmap(phq9Bitmaps);
+        // var mostRecentGAD7Bitmap = this.getMostRecentQuizBitmap(gad7Bitmaps);
+
+        var phq9SortedArticles = this.sortArticles(articles, mostRecentPHQ9Bitmap, filteredLibrarySize);
+        // var gad7SortedArticles = this.sortArticles(articles, mostRecentGAD7Bitmap, filteredLibrarySize);
+
+        // Create dropdown
+
         return (
             <div className="dashboard container">
                 <div className="row">
-                    <ArticleLibrary articles = { sortedArticles }/>
+                    <ArticleLibrary articles = { phq9SortedArticles }/>
                 </div>
             </div>
         )
@@ -84,6 +104,7 @@ const mapStateToProps = (state) => {
     return { 
         articles: state.firestore.ordered.articles,
         phq9Bitmaps: state.firebase.profile.phq9Bitmaps,
+        gad7Bitmaps: state.firebase.profile.gad7Bitmaps,
         auth: state.firebase.auth
      }
 }

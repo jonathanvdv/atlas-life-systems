@@ -6,7 +6,8 @@ import ArticleDetails from './components/articles/ArticleDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 // import AddFavorite from './components/articles/AddFavorite'
-import Quiz from './components/quiz/Quiz'
+import PHQ9 from './components/quiz/PHQ9/PHQ9'
+import GAD7 from './components/quiz/GAD7/GAD7'
 import MyLibrary from './components/articles/MyLibrary';
 import AtlasLibrary from './components/articles/AtlasLibrary';
 
@@ -23,7 +24,8 @@ class App extends Component {
             <Route path = '/signup' component = { SignUp }/>
             <Route path = '/atlas-library' component = { AtlasLibrary }/>
             <Route path = '/my-library' component = { MyLibrary }/>
-            <Route path = '/quiz' component = { Quiz }/>
+            <Route path = '/phq9' component = { PHQ9 }/>
+            <Route path = '/gad7' component = { GAD7 }/>
           </Switch>
         </div>
       </BrowserRouter>

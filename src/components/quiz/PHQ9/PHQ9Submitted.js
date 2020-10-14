@@ -1,6 +1,6 @@
 import React /*, { value, handleChange }*/ from 'react'
 
-export function QuizSubmitted() {
+export function PHQ9Submitted() {
     return (
         <div className="dashboard container">
             <div className="article-list section"> 
@@ -17,4 +17,4 @@ export function QuizSubmitted() {
     )
 }
 
-export default QuizSubmitted
+export default PHQ9Submitted

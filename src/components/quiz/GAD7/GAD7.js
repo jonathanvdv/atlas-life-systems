@@ -3,19 +3,19 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom'
 import { compose } from 'redux';
-import QuizQuestions from '../quiz/QuizQuestions'
-import QuizSubmitted from './QuizSubmitted';
+import GAD7Questions from './GAD7Questions'
+import GAD7Submitted from './GAD7Submitted';
 
 
-class Quiz extends React.Component {
+class GAD7 extends React.Component {
     
     // Checks if the quiz was submitted within the last 2 weeks
-    checkIfSubmitted(phq9Bitmaps) {
+    checkIfSubmitted(gad7Bitmaps) {
 
-        if (phq9Bitmaps !== undefined && phq9Bitmaps.length > 0 && phq9Bitmaps[phq9Bitmaps.length - 1].date !== undefined) {
+        if (gad7Bitmaps !== undefined && gad7Bitmaps.length > 0 && gad7Bitmaps[gad7Bitmaps.length - 1].date !== undefined) {
 
             // Get most recent quiz date in seconds
-            const quizDate = Math.max.apply(Math, phq9Bitmaps.map(quiz => quiz.date).map(time => time.seconds));
+            const quizDate = Math.max.apply(Math, gad7Bitmaps.map(quiz => quiz.date).map(time => time.seconds));
             // Get current date in seconds
             const currentDate = new Date().valueOf() / 1000;
             // Two weeks in seconds
@@ -40,23 +40,23 @@ class Quiz extends React.Component {
 
     render() {
         const { auth } = this.props;
-        const { phq9Bitmaps } = this.props;
-        const isSubmitted = this.checkIfSubmitted(phq9Bitmaps);
+        const { gad7Bitmaps } = this.props;
+        const isSubmitted = this.checkIfSubmitted(gad7Bitmaps);
 
         if (!auth.uid) return <Redirect to = '/signin' />
 
         if(isSubmitted) {
-            return(<QuizSubmitted></QuizSubmitted>);
+            return(<GAD7Submitted></GAD7Submitted>);
         }
         else {
-            return(<QuizQuestions></QuizQuestions>);
+            return(<GAD7Questions></GAD7Questions>);
         }
     }
 } 
 
 const mapStateToProps = (state) => {
     return {
-        phq9Bitmaps: state.firebase.profile.phq9Bitmaps,
+        gad7Bitmaps: state.firebase.profile.gad7Bitmaps,
         auth: state.firebase.auth
     }
 }
@@ -66,4 +66,4 @@ export default compose(
     firestoreConnect([
         {collection: 'users'}
     ])
-)(Quiz)
+)(GAD7)

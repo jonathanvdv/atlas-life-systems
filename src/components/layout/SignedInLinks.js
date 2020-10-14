@@ -9,7 +9,8 @@ export function SignedInLinks(props) {
         <ul className="right">
             <li><NavLink to='/atlas-library' className={ styles.links }>Atlas Library</NavLink></li>
             <li><NavLink to='/my-library' className={ styles.links }>My Library</NavLink></li>
-            <li><NavLink to='/quiz' className={ styles.links }>Quiz</NavLink></li>
+            <li><NavLink to='/phq9' className={ styles.links }>PHQ-9</NavLink></li>
+            <li><NavLink to='/gad7' className={ styles.links }>GAD-7</NavLink></li>
             <li><a href="/#" onClick={ props.signOut } className={ styles.links }>Sign Out</a></li>
             <li><NavLink to='/' className='btn btn-floating z-depth-2 red lighten-2'>
                 {props.profile.initials}

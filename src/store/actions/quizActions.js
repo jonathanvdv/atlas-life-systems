@@ -6,12 +6,22 @@ export const addQuiz = (quiz) => {
 
         const userRef = firestore.collection('users').doc(userId);
 
-        userRef.update({
-            phq9Bitmaps: firestore.FieldValue.arrayUnion(quiz)
-        }).then(() => {
-            dispatch({ type: 'ADD_QUIZ', quiz });
-        }).catch((err) => {
-            dispatch({ type: 'ADD_QUIZ_ERROR', err });
-        })
+        if (quiz.quizName === 'PHQ-9') {
+            userRef.update({
+                phq9Bitmaps: firestore.FieldValue.arrayUnion(quiz)
+            }).then(() => {
+                dispatch({ type: 'ADD_PHQ9', quiz });
+            }).catch((err) => {
+                dispatch({ type: 'ADD_PHQ9_ERROR', err });
+            })
+        } else if (quiz.quizName === 'GAD-7') {
+            userRef.update({
+                gad7Bitmaps: firestore.FieldValue.arrayUnion(quiz)
+            }).then(() => {
+                dispatch({ type: 'ADD_GAD7', quiz });
+            }).catch((err) => {
+                dispatch({ type: 'ADD_GAD7_ERROR', err });
+            })
+        }
     }
 };
