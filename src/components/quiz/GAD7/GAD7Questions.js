@@ -53,13 +53,13 @@ class GAD7Questions extends React.Component {
             <div className="dashboard container">
                 <div className="article-list section"> 
                     <div className="container section article-details">
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <span className="card-title">Generalized Anxiety Disorder Questionnaire</span>
                                 <h6 className="grey-text">Over the last 2 weeks, how often have you been bothered by any of the following problems? </h6>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>1. Feeling nervous, anxious or on edge</FormLabel>
@@ -72,7 +72,7 @@ class GAD7Questions extends React.Component {
                                 </FormControl> 
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>2. Not being able to stop or control worrying</FormLabel>
@@ -85,7 +85,7 @@ class GAD7Questions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>3. Worrying too much about different things</FormLabel>
@@ -98,7 +98,7 @@ class GAD7Questions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>4. Trouble relaxing</FormLabel>
@@ -111,7 +111,7 @@ class GAD7Questions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>5. Being so restless that it is hard to sit still</FormLabel>
@@ -124,7 +124,7 @@ class GAD7Questions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>6. Becoming easily annoyred or irritable</FormLabel>
@@ -137,7 +137,7 @@ class GAD7Questions extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="card z-depth-0 article-summary">
+                        <div className="card z-depth-1 article-summary">
                             <div className="card-content blue-text text-darken-3">
                                 <FormControl component="fieldset">
                                     <FormLabel style={{paddingBottom:'10px'}}>7. Feeling afraid as if something awful might happen</FormLabel>
