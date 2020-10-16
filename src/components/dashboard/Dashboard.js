@@ -85,15 +85,22 @@ class Dashboard extends Component {
         var mostRecentPHQ9Bitmap = this.getMostRecentQuizBitmap(phq9Bitmaps);
         // var mostRecentGAD7Bitmap = this.getMostRecentQuizBitmap(gad7Bitmaps);
 
+        // var allSortedArticles = 
         var phq9SortedArticles = this.sortArticles(articles, mostRecentPHQ9Bitmap, filteredLibrarySize);
-        // var gad7SortedArticles = this.sortArticles(articles, mostRecentGAD7Bitmap, filteredLibrarySize);
+        var gad7SortedArticles = this.sortArticles(articles, mostRecentGAD7Bitmap, filteredLibrarySize);
 
         // Create dropdown
+        var filteredSelection;
+        <DropdownButton id="filterButton" title="Filter By">
+            {/* <Dropdown.Item href={allSortedArticles}>All Quizzes</Dropdown.Item> */}
+            <Dropdown.Item href={phq9SortedArticles} onClick={filteredSelection=phq9SortedArticles}>PHQ-9</Dropdown.Item>
+            <Dropdown.Item href={gad7SortedArticles} onClick={filteredSelection=gad7SortedArticles}>GAD-7</Dropdown.Item>
+        </DropdownButton>
 
         return (
             <div className="dashboard container">
                 <div className="row">
-                    <ArticleLibrary articles = { phq9SortedArticles }/>
+                    <ArticleLibrary articles = { filteredSelection }/>
                 </div>
             </div>
         )
