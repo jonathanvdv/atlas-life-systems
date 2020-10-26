@@ -13,6 +13,7 @@
     "fonts": "0.0.2",
     "mathjs": "^7.2.0",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.4.0",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-redux-firebase": "^3.7.0",

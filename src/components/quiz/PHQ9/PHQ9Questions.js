@@ -12,6 +12,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+// import styles from '../../../styles/QuizStyles.module.css'
 
 
 class PHQ9Questions extends React.Component {
@@ -53,12 +54,12 @@ class PHQ9Questions extends React.Component {
 
         return (
             <div className="dashboard container">
-                <div className="article-list section"> 
-                    <div className="container section article-details">
-                        <div className="card z-depth-1 article-summary">
+                <div className="list section"> 
+                    <div className="container section">
+                        <div className="card z-depth-1">
                             <div className="card-content blue-text text-darken-3">
                                 <span className="card-title">Patient Health Questionnaire</span>
-                                <h6 className="grey-text">Over the last 2 weeks, how often have you been bothered by any of the following problems? </h6>
+                                <h6 className="grey-text text-darken-1">Over the last 2 weeks, how often have you been bothered by any of the following problems? </h6>
                             </div>
                         </div>
                         <div className="card z-depth-1 article-summary">

@@ -12,7 +12,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-
+// import styles from '../../../styles/QuizStyles.module.css';
 
 class GAD7Questions extends React.Component {
     

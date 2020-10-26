@@ -6,9 +6,6 @@ import { Link/*, Redirect*/ } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
 
 export default function ArticleLibrary({ articles }){
-    // const { auth } = this.props;
-    // if (!auth.uid) return <Redirect to = '/signin' />
-    console.log("articles:",articles);
     if (articles && articles.length > 0) {    
         return ( 
             <div className="article-list section"> 

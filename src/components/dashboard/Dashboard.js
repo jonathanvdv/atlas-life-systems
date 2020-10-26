@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { dot } from 'mathjs';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 class Dashboard extends Component { 
 
@@ -37,27 +38,30 @@ class Dashboard extends Component {
 
     sortArticles = (articles, mostRecentQuizBitmap, filteredLibrarySize) => {
         
-        var articleRank;
+        var articleRank = 0;
         var rankedArticles = [];
         var sortedArticles = [];
 
-        if (articles !== undefined && articles.length > 0 && mostRecentQuizBitmap.length > 0) {
-                rankedArticles = articles.map(article => {
-                    if (mostRecentQuizBitmap.length === article.bitmap.length) {
-                        articleRank = dot(mostRecentQuizBitmap, article.bitmap);
-                        let rankedArticle = Object.assign({}, {article: article}, {articleRank: articleRank});
-                        return {
-                            rankedArticle
-                        }
-                    } else {
-                        return article;
-                    }
+        if (articles !== undefined && articles.length > 0 && mostRecentQuizBitmap !== undefined && mostRecentQuizBitmap.length > 0) {
+            rankedArticles = articles.map(article => { // needs updating. awaiting article.bitmap rework
+                if (mostRecentQuizBitmap.length === article.bitmap.length) { // article.bitmap needs to be split into gad7bitmap and phq9bitmap
+                    articleRank = dot(mostRecentQuizBitmap, article.bitmap);
+                    let rankedArticle = Object.assign({}, {article: article}, {articleRank: articleRank});
+                    return { rankedArticle }
+                } else if (mostRecentQuizBitmap.length === 7) { // gad7 filterin - needs to be updated
+                    articleRank = dot(mostRecentQuizBitmap, article.bitmap.slice(0, 7));
+                    let rankedArticle = Object.assign({}, {article: article}, {articleRank: articleRank});
+                    return { rankedArticle }
+                } else {
+                    let rankedArticle = Object.assign({}, {article: article}, {articleRank: 0});
+                    return { rankedArticle }
+                }
             })
-            
-            if (rankedArticles.length > 0){
+            console.log('rankedarticles', rankedArticles)
+            if (rankedArticles.length > 0 && rankedArticles !== undefined){
                 sortedArticles = rankedArticles
                 .sort((b, a) => a.rankedArticle.articleRank - b.rankedArticle.articleRank)
-                .slice(0, filteredLibrarySize - 1);
+                .slice(0, filteredLibrarySize);
             }
         }
         if (sortedArticles.length > 0) {
@@ -65,14 +69,17 @@ class Dashboard extends Component {
                 return article.rankedArticle.article
             })
         }
+        console.log('sortedarticles', sortedArticles)
+
         return sortedArticles;
     }
 
     render () { 
         const { auth } = this.props;
+        if (!auth.uid) return <Redirect to = '/signin' />;
+
         const { phq9Bitmaps } = this.props;
         const { gad7Bitmaps } = this.props;
-        if (!auth.uid) return <Redirect to = '/signin' />;
         if (this.quizExists(phq9Bitmaps)) return <Redirect to = '/phq9' />;
         if (this.quizExists(gad7Bitmaps)) return <Redirect to = '/gad7' />;
 
@@ -83,7 +90,7 @@ class Dashboard extends Component {
         // cant use array methods, need to use object methods
 
         var mostRecentPHQ9Bitmap = this.getMostRecentQuizBitmap(phq9Bitmaps);
-        // var mostRecentGAD7Bitmap = this.getMostRecentQuizBitmap(gad7Bitmaps);
+        var mostRecentGAD7Bitmap = this.getMostRecentQuizBitmap(gad7Bitmaps);
 
         // var allSortedArticles = 
         var phq9SortedArticles = this.sortArticles(articles, mostRecentPHQ9Bitmap, filteredLibrarySize);
@@ -91,14 +98,18 @@ class Dashboard extends Component {
 
         // Create dropdown
         var filteredSelection;
-        <DropdownButton id="filterButton" title="Filter By">
-            {/* <Dropdown.Item href={allSortedArticles}>All Quizzes</Dropdown.Item> */}
-            <Dropdown.Item href={phq9SortedArticles} onClick={filteredSelection=phq9SortedArticles}>PHQ-9</Dropdown.Item>
-            <Dropdown.Item href={gad7SortedArticles} onClick={filteredSelection=gad7SortedArticles}>GAD-7</Dropdown.Item>
-        </DropdownButton>
 
         return (
             <div className="dashboard container">
+                <DropdownButton 
+                className="right"
+                id="dropdown-basic-button" 
+                title = "Filter By">
+                    {/* <Dropdown.Item href={allSortedArticles}>All Quizzes</Dropdown.Item> */}
+                    <Dropdown.Item as="button" href={ filteredSelection=articles }>None</Dropdown.Item>
+                    <Dropdown.Item as="button" href={ filteredSelection=phq9SortedArticles }>PHQ-9</Dropdown.Item>
+                    <Dropdown.Item as="button" href={ filteredSelection=gad7SortedArticles }>GAD-7</Dropdown.Item>
+                </DropdownButton>
                 <div className="row">
                     <ArticleLibrary articles = { filteredSelection }/>
                 </div>

@@ -8,7 +8,6 @@ import { Redirect } from 'react-router-dom'
 
 class AtlasLibrary extends Component { 
     render () { 
-        // console.log(this.props)
         const { auth } = this.props;
         if (!auth.uid) return <Redirect to = '/signin' />
         const { articles } = this.props;
@@ -24,7 +23,6 @@ class AtlasLibrary extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state); 
     return { 
         articles: state.firestore.ordered.articles,
         auth: state.firebase.auth
