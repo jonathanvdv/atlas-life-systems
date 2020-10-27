@@ -1,7 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { signUp } from '../../store/actions/authActions'
+// This component is the sign up page
+
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { signUp } from '../../store/actions/authActions';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 export class SignUp extends Component {
     state = {
@@ -26,33 +30,33 @@ export class SignUp extends Component {
         if (auth.uid) return <Redirect to = '/' />
 
         return (
-            <div className = "container">
-                <form onSubmit = {this.handleSubmit} className="white">
+            <div className="container z-depth-1">
+                <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="grey-text text-darken-3">Sign Up</h5>
                     <div className="input-field">
                         <label htmlFor="email">Email</label>
-                        <input type = "email" id = "email" onChange = {this.handleChange} required/>
+                        <input type="email" id="email" onChange={this.handleChange} required/>
                     </div>
                     <div className="input-field">
                         <label htmlFor="password">Password</label>
-                        <input type = "password" id = "password" onChange = {this.handleChange} required/>
+                        <input type="password" id="password" onChange={this.handleChange} required/>
                     </div>
                     <div className="input-field">
                         <label htmlFor="firstName">First Name</label>
-                        <input type = "text" id = "firstName" onChange = {this.handleChange} required/>
+                        <input type="text" id="firstName" onChange={this.handleChange} required/>
                     </div>
                     <div className="input-field">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type = "text" id = "lastName" onChange = {this.handleChange} required/>
+                        <input type="text" id="lastName" onChange={this.handleChange} required/>
                     </div>
                     <div className="input-field">
                         <div>
                             <label htmlFor="dob">Date of Birth</label>
                         </div>
-                            <input type = "date" id = "dob"  onChange = {this.handleChange} required/>
+                            <input type="date" id="dob"  onChange={this.handleChange} required/>
                     </div>
                     <div className="input-field">
-                        <button className = "btn red lighten-2 z-depth-0">Sign Up</button>
+                        <button className="btn red lighten-2 z-depth-0">Sign Up</button>
                         <div className="red-text center">
                             { authError ? <p>{ authError }</p> : null }
                         </div>
@@ -76,4 +80,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    firestoreConnect([
+        {collection: 'users'}
+    ])
+)(SignUp)

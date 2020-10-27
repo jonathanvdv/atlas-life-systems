@@ -40,10 +40,10 @@ code {
     monospace;
 }
 
-input[type=text]:not(.brwoser-default):focus:not([readonly]),
-input[type=email]:not(.brwoser-default):focus:not([readonly]),
-input[type=password]:not(.brwoser-default):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]){
-  border-color: #ec407a;
+  border-color: #2c4cff;
   box-shadow: none;
 }

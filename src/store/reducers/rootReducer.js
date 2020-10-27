@@ -1,14 +1,12 @@
-import authReducer from './authReducer'
-import favoriteReducer from './favoriteReducer'
-import libraryReducer from './libraryReducer'
-import quizReducer from './quizReducer'
-import { combineReducers } from 'redux'
-import { firestoreReducer } from 'redux-firestore'
-import { firebaseReducer } from 'react-redux-firebase'
+import authReducer from './authReducer';
+import favoriteReducer from './favoriteReducer';
+import quizReducer from './quizReducer';
+import { combineReducers } from 'redux';
+import { firestoreReducer } from 'redux-firestore';
+import { firebaseReducer } from 'react-redux-firebase';
 
-const rootReducer = combineReducers({
+const rootReducer = combineReducers({ // composes/combines reducers
     auth: authReducer,
-    library: libraryReducer,
     favorite: favoriteReducer,
     quiz: quizReducer,
     firestore: firestoreReducer,

@@ -24,9 +24,6 @@ class GAD7 extends React.Component {
             const twoWeeks = 60;
 
             //const twoWeeks = 1209600;
-            
-            console.log('current', currentDate);
-            console.log('quiz date', quizDate);
 
             // Return true if the quiz has been submitted in the past 2 weeks
             return (currentDate < quizDate + twoWeeks); 
@@ -40,10 +37,10 @@ class GAD7 extends React.Component {
 
     render() {
         const { auth } = this.props;
+        if (!auth.uid) return <Redirect to = '/signin' />
+
         const { gad7Bitmaps } = this.props;
         const isSubmitted = this.checkIfSubmitted(gad7Bitmaps);
-
-        if (!auth.uid) return <Redirect to = '/signin' />
 
         if(isSubmitted) {
             return(<GAD7Submitted></GAD7Submitted>);

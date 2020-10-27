@@ -1,4 +1,4 @@
-// This component is currently the homepage of the application
+// This component is the ful atlas archive with all unfiltered articles
 import React, { Component } from 'react'
 import ArticleLibrary from '../articles/ArticleLibrary'
 import { connect } from 'react-redux'
@@ -11,7 +11,7 @@ class AtlasLibrary extends Component {
         const { auth } = this.props;
         if (!auth.uid) return <Redirect to = '/signin' />
         const { articles } = this.props;
-
+        // returns format for articles
         return (
             <div className="dashboard container">
                 <div className="row">
@@ -24,14 +24,15 @@ class AtlasLibrary extends Component {
 
 const mapStateToProps = (state) => {
     return { 
-        articles: state.firestore.ordered.articles,
-        auth: state.firebase.auth
+        articles: state.firestore.ordered.articles, // want to access articles
+        auth: state.firebase.auth // need authentication info
      }
 }
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        {collection: 'articles'}
+        {collection: 'articles'}, // need to access articles collection
+        {collection: 'users'} // need access to user info such as authentication
     ])
 )(AtlasLibrary)

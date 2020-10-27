@@ -20,6 +20,7 @@ import 'firebase/database'
   if (!firebase.apps.length) {
     firebase.initializeApp(rrfConfig);
   }
+  // initialize analytics and authentication
   firebase.analytics();
   firebase.auth();
 

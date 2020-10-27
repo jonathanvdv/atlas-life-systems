@@ -24,9 +24,6 @@ class PHQ9 extends React.Component {
             const twoWeeks = 60;
 
             //const twoWeeks = 1209600;
-            
-            console.log('current', currentDate);
-            console.log('quiz date', quizDate);
 
             // Return true if the quiz has been submitted in the past 2 weeks
             return (currentDate < quizDate + twoWeeks); 

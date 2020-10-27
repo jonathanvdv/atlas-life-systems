@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-import { dot } from 'mathjs';
+import { dot, random } from 'mathjs';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 class Dashboard extends Component { 
 
-    quizExists = (quizBitmaps) => {
+    quizExists = (quizBitmaps) => { // function checks if quiz was taken - if not: redirects you to a quiz and locks dashboard
         if ((quizBitmaps !== undefined || !quizBitmaps) || quizBitmaps.length  < 1) {
             return false
         } else {
@@ -18,77 +18,77 @@ class Dashboard extends Component {
         }
     }
     
-    getMostRecentQuizBitmap = (quizBitmaps) => {
+    getMostRecentQuizBitmap = (quizBitmaps) => { // gets bitmap of most recent quiz - needs updating for multiple quiz types
+        // variable declaration - var since these are dynamic? can change over time
         var mostRecentQuiz = [];
         var orderedMostRecentQuiz = [];
 
         if (quizBitmaps !== undefined && quizBitmaps.length > 0) {
-            mostRecentQuiz = quizBitmaps[quizBitmaps.length - 1];
-            delete mostRecentQuiz.date;
-            delete mostRecentQuiz.quizName;
-            Object.keys(mostRecentQuiz).sort().forEach((key) => {
+            // **** quizBitmaps is an OBJECT not an ARRAY - can not use .map functionality
+            mostRecentQuiz = quizBitmaps[quizBitmaps.length - 1]; // pops top quiz
+            // these deletes do NOT change data stored in firebase
+            delete mostRecentQuiz.date; // delete date object property *locally
+            delete mostRecentQuiz.quizName; // delete quizName object *locally
+            Object.keys(mostRecentQuiz).sort().forEach((key) => { // This orders the bitmaps into proper question order
                 orderedMostRecentQuiz[key] = mostRecentQuiz[key];
-              });
+              }); 
             return Object.values(orderedMostRecentQuiz);
-        } else {
+        } else { // invalid bitmap conditional
             mostRecentQuiz = [];
-            return [];
+            return orderedMostRecentQuiz = [];
         }
     }
 
-    sortArticles = (articles, mostRecentQuizBitmap, filteredLibrarySize) => {
-        
-        var articleRank = 0;
+    sortArticles = (articles, mostRecentQuizBitmap, filteredLibrarySize) => { // ranks and sorts articles based on bitmaps dot product
+        // variable declaration
+        var articleRank;
         var rankedArticles = [];
         var sortedArticles = [];
 
         if (articles !== undefined && articles.length > 0 && mostRecentQuizBitmap !== undefined && mostRecentQuizBitmap.length > 0) {
             rankedArticles = articles.map(article => { // needs updating. awaiting article.bitmap rework
-                if (mostRecentQuizBitmap.length === article.bitmap.length) { // article.bitmap needs to be split into gad7bitmap and phq9bitmap
-                    articleRank = dot(mostRecentQuizBitmap, article.bitmap);
+                if (mostRecentQuizBitmap.length === article.bitmap.length) { // phq9 filtering; article.bitmap needs to be split into gad7bitmap and phq9bitmap
+                    articleRank = dot(mostRecentQuizBitmap, article.bitmap); // dot product of bitmaps
+                    let rankedArticle = Object.assign({}, {article: article}, {articleRank: articleRank}); // creates new array with object "ranked article" with object properties "article" and "articleRank"
+                    return { rankedArticle }
+                } else if (mostRecentQuizBitmap.length === 7) { // gad7 filtering; needs to be updated
+                    articleRank = dot(mostRecentQuizBitmap, article.bitmap.slice(0, 7)); // slice is temporary to take first 7 indices of bitmap (size 9)
                     let rankedArticle = Object.assign({}, {article: article}, {articleRank: articleRank});
                     return { rankedArticle }
-                } else if (mostRecentQuizBitmap.length === 7) { // gad7 filterin - needs to be updated
-                    articleRank = dot(mostRecentQuizBitmap, article.bitmap.slice(0, 7));
-                    let rankedArticle = Object.assign({}, {article: article}, {articleRank: articleRank});
-                    return { rankedArticle }
-                } else {
-                    let rankedArticle = Object.assign({}, {article: article}, {articleRank: 0});
+                } else { // invalid source bitmap conditional
+                    let rankedArticle = Object.assign({}, {article: article}, {articleRank: random(0,10).floor});
                     return { rankedArticle }
                 }
             })
-            console.log('rankedarticles', rankedArticles)
-            if (rankedArticles.length > 0 && rankedArticles !== undefined){
+            if (rankedArticles.length > 0 && rankedArticles !== undefined){ // compares article ranks and sorts the array
                 sortedArticles = rankedArticles
                 .sort((b, a) => a.rankedArticle.articleRank - b.rankedArticle.articleRank)
                 .slice(0, filteredLibrarySize);
             }
         }
-        if (sortedArticles.length > 0) {
+        if (sortedArticles.length > 0) { // returns article object from ranked articles
             sortedArticles = sortedArticles.map(article => {
                 return article.rankedArticle.article
             })
         }
-        console.log('sortedarticles', sortedArticles)
-
         return sortedArticles;
     }
 
     render () { 
+        // authentication protocol
         const { auth } = this.props;
         if (!auth.uid) return <Redirect to = '/signin' />;
 
+        // variable declarations
         const { phq9Bitmaps } = this.props;
         const { gad7Bitmaps } = this.props;
-        if (this.quizExists(phq9Bitmaps)) return <Redirect to = '/phq9' />;
-        if (this.quizExists(gad7Bitmaps)) return <Redirect to = '/gad7' />;
+        // quiz redirects if not taken - seems to work backwards?
+        if (this.quizExists(phq9Bitmaps)) { return <Redirect to = '/phq9' /> };
+        if (this.quizExists(gad7Bitmaps)) { return <Redirect to = '/gad7' /> };
 
-        const filteredLibrarySize = 10;
+        const filteredLibrarySize = 10; // arbitrary dashboard max # of articles
         const { articles } = this.props;
-        
-        // these arrays appear to be objects with properties as opposed to arrays
-        // cant use array methods, need to use object methods
-
+        // method calls
         var mostRecentPHQ9Bitmap = this.getMostRecentQuizBitmap(phq9Bitmaps);
         var mostRecentGAD7Bitmap = this.getMostRecentQuizBitmap(gad7Bitmaps);
 
@@ -96,21 +96,20 @@ class Dashboard extends Component {
         var phq9SortedArticles = this.sortArticles(articles, mostRecentPHQ9Bitmap, filteredLibrarySize);
         var gad7SortedArticles = this.sortArticles(articles, mostRecentGAD7Bitmap, filteredLibrarySize);
 
-        // Create dropdown
-        var filteredSelection;
+        var filteredSelection; // dropdown variable
 
         return (
             <div className="dashboard container">
                 <DropdownButton 
-                className="right"
-                id="dropdown-basic-button" 
+                className="right" // moves button to top right
+                id="dropdown-basic-button" // dropdown type
                 title = "Filter By">
                     {/* <Dropdown.Item href={allSortedArticles}>All Quizzes</Dropdown.Item> */}
                     <Dropdown.Item as="button" href={ filteredSelection=articles }>None</Dropdown.Item>
                     <Dropdown.Item as="button" href={ filteredSelection=phq9SortedArticles }>PHQ-9</Dropdown.Item>
                     <Dropdown.Item as="button" href={ filteredSelection=gad7SortedArticles }>GAD-7</Dropdown.Item>
                 </DropdownButton>
-                <div className="row">
+                <div>
                     <ArticleLibrary articles = { filteredSelection }/>
                 </div>
             </div>

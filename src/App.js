@@ -5,7 +5,6 @@ import Dashboard from './components/dashboard/Dashboard'
 import ArticleDetails from './components/articles/ArticleDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-// import AddFavorite from './components/articles/AddFavorite'
 import PHQ9 from './components/quiz/PHQ9/PHQ9'
 import GAD7 from './components/quiz/GAD7/GAD7'
 import MyLibrary from './components/articles/MyLibrary';
