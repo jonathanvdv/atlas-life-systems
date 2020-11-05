@@ -121,7 +121,7 @@ class Dashboard extends Component {
                     <div class="welcome"> <h5>Hello! Welcome *insert name*</h5></div>
                     <div class="date"> 
                         <p>Date/Time:</p>
-                        <p id="datetime"></p>
+                        <p id="datetime">test</p>
 
                         <script> 
                         var dt = new Date();
