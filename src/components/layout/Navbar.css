@@ -1,0 +1,139 @@
+.navbar {
+    background-color: transparent;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    ;
+  }
+  .navbar .SideMenu {
+    float: left;
+  }
+
+.right {
+    display: inline-flex;
+    align-items: center;
+}
+
+.right .ul{
+    padding: 10px;
+}
+
+  .navbar .UserNav {
+    float: right;
+    margin-right: 5vh;
+  }
+ 
+  .links {
+    font-family: calibri;
+    font-weight: 700;
+    font-size: 20px;
+    color: #4163a1;
+    text-shadow: 1px 2px #afdaf1;
+    position: relative;
+}
+
+.navbar .UserNav {
+  display: absolute; 
+  align-items: center;
+}
+
+.navbar .UserNav a:hover {
+  color: #3753f1b2;
+}
+
+  .menu-bars {
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: transparent;
+    padding: 5%;
+  }
+
+  .menu-bars svg {
+    color: #4163a1 !important;
+  }
+
+  .menu-bars svg:hover {
+    color: #7296da !important;
+  }
+
+  .nav-menu {
+    background-color: #060b26;
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+    transition:400ms;
+  }
+  
+  .nav-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+    width: 90%;
+  }
+  
+  .nav-text a {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+  }
+  
+  .nav-text a:hover {
+    background-color: #1a83ff;
+  }
+  
+  .nav-menu-items {
+    width: 100%;
+  }
+  
+  .navbar-toggle {
+    background-color: #1a83ff;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .navbar-toggle a:hover {
+    background-color: #52a3ff;
+  }
+  
+  span {
+    margin-left: 16px;
+  }
+
+.content {
+    padding: 16px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+
+.UserNav {
+  align-items: flex-end;
+}

@@ -1,0 +1,21 @@
+.dashboard.container .searchbar {
+    height: 36px;
+    background-color: #e5e5e5;
+}
+
+.dashboard.container .welcomedate {
+    height: 8vh;
+    padding: 5px;
+    background-color: #b9dcf8;
+    align-items: center;
+}
+
+.dashboard.container .welcomedate .welcome {
+    float: left;
+    color: #1d64a0;
+}
+
+.dashboard.container .welcomedate .date {
+    float: right;
+    color: #1d64a0;
+}

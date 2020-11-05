@@ -7,6 +7,9 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { dot, random } from 'mathjs';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
+import Grid from '@material-ui/core/Grid';
+import { engagement } from '../quiz/Engagement/engagement';
+import '../../styles/dashboard.css'
 
 class Dashboard extends Component { 
 
@@ -99,16 +102,41 @@ class Dashboard extends Component {
         var filteredSelection; // dropdown variable
 
         return (
+            
             <div className="dashboard container">
-                <DropdownButton 
-                className="right" // moves button to top right
-                id="dropdown-basic-button" // dropdown type
-                title = "Filter By">
-                    {/* <Dropdown.Item href={allSortedArticles}>All Quizzes</Dropdown.Item> */}
-                    <Dropdown.Item as="button" href={ filteredSelection=articles }>None</Dropdown.Item>
-                    <Dropdown.Item as="button" href={ filteredSelection=phq9SortedArticles }>PHQ-9</Dropdown.Item>
-                    <Dropdown.Item as="button" href={ filteredSelection=gad7SortedArticles }>GAD-7</Dropdown.Item>
-                </DropdownButton>
+
+                <div className="searchbar">
+                    <DropdownButton 
+                    className="right" // moves button to top right
+                    id="dropdown-basic-button" // dropdown type
+                    title = "Filter By">
+                        {/* <Dropdown.Item href={allSortedArticles}>All Quizzes</Dropdown.Item> */}
+                        <Dropdown.Item as="button" href={ filteredSelection=articles }>None</Dropdown.Item>
+                        <Dropdown.Item as="button" href={ filteredSelection=phq9SortedArticles }>PHQ-9</Dropdown.Item>
+                        <Dropdown.Item as="button" href={ filteredSelection=gad7SortedArticles }>GAD-7</Dropdown.Item>
+                    </DropdownButton>
+                </div>
+
+                <div className="welcomedate">
+                    <div class="welcome"> <h5>Hello! Welcome *insert name*</h5></div>
+                    <div class="date"> 
+                        <p>Date/Time:</p>
+                        <p id="datetime"></p>
+
+                        <script> 
+                        var dt = new Date();
+                        document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
+                        </script>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s3 l4">Test</div> 
+                    <div class="col s3 l4">Test</div>
+                    <div class="col s3 l4">Test</div>
+                </div>
+                
+                
                 <div>
                     <ArticleLibrary articles = { filteredSelection }/>
                 </div>
